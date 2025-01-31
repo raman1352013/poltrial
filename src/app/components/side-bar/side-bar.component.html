@@ -1,0 +1,531 @@
+<div class="page-wrapper toggled">
+  <!-- Sidebar -->
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-menu">
+        <ul class="pt-2">
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableHome">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Home"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-home"></i>
+              <span>Home</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable16 || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationReg"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>Registration (Document Scrutiny)</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable17 || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationEduQualification"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>Educational qualification</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable18 || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationBackwardArea"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>Backward Area or Landless</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable19 || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationLmv"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span> LMV License</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable20 || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationNcc"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>NSS/NCC and sports certificate</span>
+            </a>
+          </li>
+
+          <!-- <li class="sidebar-dropdown rm-icon">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DailySummaryScrutiny"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>Daily Summary(Scrutiny)</span>
+            </a>
+          </li> -->
+
+          <li class="sidebar-dropdown" *ngIf="enable14User || enableAdmin || enable16 || enable17 || enable18 || enable19 || enable20">
+            <a class="nav-link" href="#" onclick="return false;" [routerLinkActive]="['is-active']"
+              (click)='changeNavigation()'>
+              <i class="fa fa-users-cog"></i>
+              <span>Daily Summary(Scrutiny)</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#" onclick="return false;" *ngIf="enable16 || enableAdmin" routerLink="/DailySummaryScrutinyReg" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Registration(Document Scrutiny)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" *ngIf="enable17 || enableAdmin" routerLink="/DailySummaryScrutinyEdu" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Educational Qualification</span></a>
+                </li>
+
+                <li>
+                  <a href="#" onclick="return false;" *ngIf="enable18 || enableAdmin" routerLink="/DailySummaryScrutinyLand" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Backward Area and Landless</span></a>
+                </li>
+
+                <li>
+                  <a href="#" onclick="return false;"  *ngIf="enable19 || enableAdmin" routerLink="/DailySummaryScrutinyLmv" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>LMV License</span></a>
+                </li>
+
+                <li>
+                  <a href="#" onclick="return false;" *ngIf="enable20 || enableAdmin" routerLink="/DailySummaryScrutinyNss" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>NCC/NSS/Bharat Scout Mark</span></a>
+                </li>
+
+                <!-- <li>
+                  <a href="#" onclick="return false;" *ngIf="enable20" routerLink="/DailySummaryScrutinyNcc" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>NCC</span></a>
+                </li> -->
+
+              </ul>
+            </div>
+          </li>
+
+
+
+          
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableApplicationDetails || enable14User || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/ApplicationDetails"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>Application Details</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable21 || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationAppeal"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>Appeal Document Verification</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enablePstPetDetails || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/PetDetails"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>PST/PET Details</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableAdmin || enableSp">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/ExamDetails"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-asterisk"></i>
+              <span>Written Exam</span>
+            </a>
+          </li>
+
+          <!-- PetDetails -->
+          <!-- <li class="sidebar-dropdown rm-icon">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/UserDetails"
+              [routerLinkActive]="['is-active']">
+              <i class="fa fa-user"></i>
+              <span>User Details</span>
+            </a>
+          </li> -->
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/AdmitCard"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Generate Admit Card</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableAdmin  || enableSp">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/ScrutinyAdmitCard"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Generate Admit Card(Scrutiny)</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/AdmitCardExam"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Generate Admit Card for Written Exam</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableRegisterCandidate || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/ScheduleExam"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Register Candidate(Exam)</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableRegistration || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Attendance"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Registration</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableDriver || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Driver"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Driver</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableRegistration || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Registration"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Sports Registration</span>
+            </a>
+          </li>
+          
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableSp || enable14User || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/IndividualResult"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Individual Result(PST/PET)</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/NewReport"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Download Exam Result</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable14User || enableAdmin || enableSp">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/ScrutinyDetails"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Document Evaluation Schedule</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enableAppeal || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Appeal"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Appeal</span>
+            </a>
+          </li>
+
+          <!-- <li class="sidebar-dropdown rm-icon" *ngIf="enableReport">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Summary"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>PST/PET Summary</span>
+            </a>
+          </li> -->
+
+          <!-- <li class="sidebar-dropdown rm-icon" *ngIf="enableResult">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Result"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>PST/PET Result</span>
+            </a>
+          </li> -->
+<!-- ExamDetails -->
+          <!-- <li class="sidebar-dropdown rm-icon">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Height"
+              [routerLinkActive]="['is-active']">
+              <i class="fa fa-id-card"></i>
+              <span>Height</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown rm-icon">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Chest"
+              [routerLinkActive]="['is-active']">
+              <i class="fa fa-id-card"></i>
+              <span>Chest</span>
+            </a>
+          </li> -->
+          <!-- <li class="sidebar-dropdown rm-icon">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/Race"
+              [routerLinkActive]="['is-active']">
+              <i class="fa fa-id-card"></i>
+              <span>Race</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown rm-icon">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/HighJump"
+              [routerLinkActive]="['is-active']">
+              <i class="fa fa-id-card"></i>
+              <span>High Jump</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown rm-icon">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/BroadJump"
+              [routerLinkActive]="['is-active']">
+              <i class="fa fa-id-card"></i>
+              <span>Broad Jump</span>
+            </a>
+          </li> -->
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable14User || enableAdmin || enableSp">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationIndividualResult"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Individual Result (Scrutiny)</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable14User || enableAdmin || enableSp">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DocVerificationScrutinySumm"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Scrutiny Summary</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown"  *ngIf="enable14User || enableAdmin || enableSp">
+            <a class="nav-link" href="#" onclick="return false;" [routerLinkActive]="['is-active']"
+              (click)='changeNavigation()'>
+              <i class="fa fa-users-cog"></i>
+              <span>Scrutiny Report</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/DocVerificationDownloadResult" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Download Result</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/DocVerificationDownloadRowData" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Download Raw Data</span></a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="sidebar-dropdown" *ngIf="enablePst || enableAdmin">
+            <a class="nav-link" href="#" onclick="return false;" [routerLinkActive]="['is-active']"
+              (click)='changeNavigation()'>
+              <i class="fa fa-users-cog"></i>
+              <span>PST</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li *ngIf="enableHeight">
+                  <a href="#" onclick="return false;" routerLink="/Height" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Height</span>
+                  </a>
+                </li>
+                <li *ngIf="enableChest">
+                  <a href="#" onclick="return false;" routerLink="/Chest" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Chest</span></a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="sidebar-dropdown" *ngIf="enablePet || enableAdmin">
+            <a class="nav-link" href="#" onclick="return false;" [routerLinkActive]="['is-active']"
+              (click)='changeNavigation()'>
+              <i class="fa fa-users-cog"></i>
+              <span>PET</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li *ngIf="enableRace">
+                  <a class="nav-link" href="#" onclick="return false;" routerLink="/Race"
+                    [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Race</span>
+                  </a>
+                </li>
+                <li *ngIf="enableHighJump">
+                  <a href="#" onclick="return false;" routerLink="/HighJump" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>High
+                      Jump</span>
+                  </a>
+                </li>
+                <li *ngIf="enableBroadJump">
+                  <a href="#" onclick="return false;" routerLink="/BroadJump" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Broad
+                      Jump</span></a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="sidebar-dropdown" *ngIf="reportUser">
+            <a class="nav-link" href="#" onclick="return false;" [routerLinkActive]="['is-active']"
+              (click)='changeNavigation()'>
+              <i class="fa fa-users-cog"></i>
+              <span>Report</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a class="nav-link" href="#" onclick="return false;" routerLink="/PstPass"
+                    [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>PST Pass</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-link" href="#" onclick="return false;" routerLink="/PstFail"
+                    [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>PST Fail</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/PetPass" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>PET Pass</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/PetFail" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>PET Fail</span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/DriverPass" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Driver Pass</span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/DriverFail" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Driver Fail</span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/PstPending" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>PST Pending</span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/PetPending" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>PET Pending</span></a>
+                </li>
+
+
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/RegisteredUser" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Registered</span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/AllowProvisioned" [routerLinkActive]="['is-active']"
+                    (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Provisionally Allowed </span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/RejectedAtRegistration"
+                    [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Rejected (At Registration )</span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/AbsentAfterRegistration"
+                    [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Absent (After Registration)</span></a>
+                </li>
+                <li>
+                  <a href="#" onclick="return false;" routerLink="/RejectedAfterRegistration"
+                    [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+                    <i class="fa fa-id-card"></i>
+                    <span>Rejected (After Registration)</span></a>
+                </li>
+              </ul>
+            </div>
+          </li> -->
+          <li class="sidebar-dropdown rm-icon" *ngIf="dailySummary || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/DailySummary"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Daily Summary</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown rm-icon" *ngIf="individualProfileUpdate || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;"
+              routerLink="/IndividualProfileUpdate" [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Individual Profile Update</span>
+            </a>
+          </li>
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="enable22 || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;"
+              routerLink="/DisqualifyCandidate" [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Disqualify Candidate (Written Exam)</span>
+            </a>
+          </li>
+
+
+          <li class="sidebar-dropdown rm-icon" *ngIf="uploadDocument || enableAdmin">
+            <a id="side-bar-home" class="nav-link" href="#" onclick="return false;" routerLink="/UploadDocument"
+              [routerLinkActive]="['is-active']" (click)='changeNavigation()'>
+              <i class="fa fa-id-card"></i>
+              <span>Upload Image</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</div>

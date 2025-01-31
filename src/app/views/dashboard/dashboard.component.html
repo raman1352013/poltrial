@@ -1,0 +1,1116 @@
+<!-- Main block -->
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <div class="row d-flex justify-content-center">
+
+        <div class="col-md-10 col-lg-10 mb-3">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+              <div class="card bg-col-grey text-left shadow  cardIcon">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 cardText">
+                      <p style="font-size: 15px;font-weight: bold;font-family: inherit;">Form Submitted</p>
+                      <p style="font-size: 14px;font-weight: bold;">{{summary?.formSumbmited}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+              <div class="card bg-col-green text-left shadow  cardIcon">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 cardText">
+                      <p style="font-size: 15px;font-weight: bold;font-family: inherit;">Fee Paid/Amount</p>
+                      <p style="font-size: 14px;font-weight: bold;">{{summary?.paidFee}} / {{summary?.amountReceived}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+              <div class="card bg-col-red text-left shadow  cardIcon">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 cardText">
+                      <p style="font-size: 15px;font-weight: bold;font-family: inherit;">Pending Fee</p>
+                      <p style="font-size: 14px;font-weight: bold;">{{summary?.pendingFee}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="row d-flex justify-content-center pr-3 pl-3"> -->
+      <div class="horizontal-scrolling">
+        <table class="table table-bordered w-nospace table-hover">
+          <thead>
+            <tr>
+              <th class="bg-col-body cardText">District name</th>
+              <th class="bg-col-body cardText">Form Submitted</th>
+              <th class="bg-col-body cardText">Fee Paid</th>
+              <th class="bg-col-body cardText">Pending Fee</th>
+              <th class="bg-col-body cardText">Male Candidate</th>
+              <th class="bg-col-body cardText">Female Candidate</th>
+              <th class="bg-col-body cardText">Driver</th>
+              <th class="bg-col-body cardText">General</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr data-toggle="collapse" *ngFor="let x of summaryList">
+              <td>{{x.districtName}}</td>
+              <td (click)='gotToDetailsBy("allApplication", x)'><a>{{x.formSumbmited}}</a></td>
+              <td (click)='gotToDetailsBy("payment", x)'><a>{{x.paidFee}}</a></td>
+              <td (click)='gotToDetailsBy("noPayment", x)'><a>{{x.pendingFee}}</a></td>
+              <td (click)='gotToDetailsBy("male", x)'><a>{{x.maleCandidate}}</a></td>
+              <td (click)='gotToDetailsBy("female", x)'><a>{{x.femaleCandidate}}</a></td>
+              <td (click)='gotToDetailsBy("driver", x)'><a>{{x.postAppliedDriver}}</a></td>
+              <td (click)='gotToDetailsBy("general", x)'><a>{{x.postAppliedGeneral}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- </div> -->
+
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<ng-template #keywordsInput let-modal data-keyboard="false" data-backdrop="static">
+  <div class="modal-header login-header  border-top-left-radius border-top-right-radius">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center uppercase ft-weight-bold  position-relative">General Instructions
+        </h2>
+      </div>
+      <div class="col-md-12">
+        <h5 class="font15">
+          Candidate should go through the following Instructions and Guidelines till the end and confirm using the
+          checkbox
+          and OK button
+        </h5>
+      </div>
+    </div>
+    <br>
+
+
+  </div>
+  <div class="modal-body" (scroll)="scrollHandler($event)">
+    <!-- <ul>
+      <li> Field marked with * are mandatory</li>
+      <li> For proof of date of birth, only matriculation certificate will be considered.</li>
+      <li>+2 pass certificate (minimum educational qualification) will be considered only from an institution
+        duly recognized by HP Govt./HP Board of School Education.</li>
+      <li>Category/Sub-category certificate must be valid as on last date of submission of Application Form.
+      </li>
+      <li>Candidate must be a bonafide Himachali as per record.</li>
+
+      <li> Candidate must bring his original certificates and self attested photocopies of certificates at the
+        time of Physical Efficiency Test as well as Personal Interview.</li>
+
+      <li>The candidate must ensure that the application and fees is submitted before 31st Oct, 2021 upto 8.00 AM
+      </li>
+
+      <li>The cut off date for calculation of upper and lower age and reserved category certification limit is
+        31.10.2021.( 31 October 2021 )</li>
+      <li>Processing fee would not be refunded if the application form is rejected.</li>
+      <li> Field marked with * are mandatory</li>
+      <li> For proof of date of birth, only matriculation certificate will be considered.</li>
+      <li>+2 pass certificate (minimum educational qualification) will be considered only from an institution
+        duly recognized by HP Govt./HP Board of School Education.</li>
+      <li>Category/Sub-category certificate must be valid as on last date of submission of Application Form.
+      </li>
+      <li>Candidate must be a bonafide Himachali as per record.</li>
+
+      <li> Candidate must bring his original certificates and self attested photocopies of certificates at the
+        time of Physical Efficiency Test as well as Personal Interview.</li>
+
+      <li>The candidate must ensure that the application and fees is submitted before 31st Oct, 2021 upto 8.00 AM
+      </li>
+
+      <li>The cut off date for calculation of upper and lower age and reserved category certification limit is
+        31.10.2021.( 31 October 2021 )</li>
+      <li>Processing fee would not be refunded if the application form is rejected.</li>
+      <li> Field marked with * are mandatory</li>
+      <li> For proof of date of birth, only matriculation certificate will be considered.</li>
+      <li>+2 pass certificate (minimum educational qualification) will be considered only from an institution
+        duly recognized by HP Govt./HP Board of School Education.</li>
+      <li>Category/Sub-category certificate must be valid as on last date of submission of Application Form.
+      </li>
+      <li>Candidate must be a bonafide Himachali as per record.</li>
+
+      <li> Candidate must bring his original certificates and self attested photocopies of certificates at the
+        time of Physical Efficiency Test as well as Personal Interview.</li>
+
+      <li>The candidate must ensure that the application and fees is submitted before 31st Oct, 2021 upto 8.00 AM
+      </li>
+
+      <li>The cut off date for calculation of upper and lower age and reserved category certification limit is
+        31.10.2021.( 31 October 2021 )</li>
+      <li>Processing fee would not be refunded if the application form is rejected.</li>
+      <li> Field marked with * are mandatory</li>
+      <li> For proof of date of birth, only matriculation certificate will be considered.</li>
+      <li>+2 pass certificate (minimum educational qualification) will be considered only from an institution
+        duly recognized by HP Govt./HP Board of School Education.</li>
+      <li>Category/Sub-category certificate must be valid as on last date of submission of Application Form.
+      </li>
+      <li>Candidate must be a bonafide Himachali as per record.</li>
+
+      <li> Candidate must bring his original certificates and self attested photocopies of certificates at the
+        time of Physical Efficiency Test as well as Personal Interview.</li>
+
+      <li>The candidate must ensure that the application and fees is submitted before 31st Oct, 2021 upto 8.00 AM
+      </li>
+
+      <li>The cut off date for calculation of upper and lower age and reserved category certification limit is
+        31.10.2021.( 31 October 2021 )</li>
+      <li>Processing fee would not be refunded if the application form is rejected.</li>
+      <li> Field marked with * are mandatory</li>
+      <li> For proof of date of birth, only matriculation certificate will be considered.</li>
+      <li>+2 pass certificate (minimum educational qualification) will be considered only from an institution
+        duly recognized by HP Govt./HP Board of School Education.</li>
+      <li>Category/Sub-category certificate must be valid as on last date of submission of Application Form.
+      </li>
+      <li>Candidate must be a bonafide Himachali as per record.</li>
+
+      <li> Candidate must bring his original certificates and self attested photocopies of certificates at the
+        time of Physical Efficiency Test as well as Personal Interview.</li>
+
+      <li>The candidate must ensure that the application and fees is submitted before 31st Oct, 2021 upto 8.00 AM
+      </li>
+
+      <li>The cut off date for calculation of upper and lower age and reserved category certification limit is
+        31.10.2021.( 31 October 2021 )</li>
+      <li>Processing fee would not be refunded if the application form is rejected.</li>
+    </ul> -->
+
+
+    <div class="row">
+      <div class="col-md-12">
+        1. Fields marked with * in the online application form are mandatory
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        2. Each candidate should submit ONE application form only. Candidature of those who submit more than one
+        application form will be rejected summarily and the amount of application and/or processing fees will be
+        forfeited.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        3. In case of any mismatch of data between application form filled up by the applicants and supporting
+        testimonials at any stage of recruitment, the candidature will be summarily rejected.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        4. Application Forms shall be rejected in case the signature of the applicant is uploaded/rendered in block
+        letters/unintelligible/does not match with name of the candidate.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        5. Admission to the tests/examination will be purely provisional subject to verification of eligibility at a
+        later stage. Therefore, candidature of any candidate shall be rejected straightway if found not eligible at any
+        stage, even after appearance in the tests /examinations.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        6. Before start filling this form, you should keep following documents handy:<br>
+
+        i. Colored digital or scanned photograph in JPEG/.JPG format, with minimum and maximum size of 10kb to 200kb
+        with
+        dimensions of 135 x 170 Pixels<br>
+
+        ii. Scanned signatures in JPEG/.JPG format with minimum and maximum size of 4kb to 30kb with dimensions of 135 x
+        56 Pixels<br>
+
+        iii. Class 10th Certificate<br>
+
+        iv. Class 12th Certificate:<br>
+
+        v. Himachali Bonafide certificate:<br>
+
+        vi. Documents related to category (if applicable)<br>
+
+        vii. Driving License (If applicable):<br>
+
+        viii. Aadhaar (UIDAI) Number:<br>
+
+        ix. Certificate of any other qualification (if applicable):<br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        7. Date of Birth as recorded in 10th class or equivalent certificate will only be accepted as valid proof for
+        Date of Birth / verification of age
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        8. The applicant must have passed 12th/ 10+2 examination from the Himachal Pradesh Board of School Education
+        (HPBoSE) or its equivalent Board of School Education
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        9. A candidate belonging to any special category e.g. SC/ ST/ OBC/ Ward of Freedom Fighter/ Ward of Ex-
+        Serviceman/ Economically Weaker Section (EWS)/ Below Poverty Line (BPL) card holders etc., if qualified in
+        tests/examination, has to produce revalidated/ renewed or fresh certificate issued by the competent authority
+        which should be valid as on 31.10.2021 during verification of testimonials at the time of document
+        verification/evaluation process. Therefore, the certificates issued before 31.10.2021 needs to be revalidated/
+        renewed and should be issued by an Executive Magistrate authorized by the Govt. of Himachal Pradesh
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        10. In case, a candidate from any specific category avails of the benefit of relaxation in upper age limit at
+        the
+        time of submission of application, but fails to produce the relevant revalidated/ renewed certificate at the
+        time
+        of their interview, their candidature shall summarily be rejected
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        11. Candidate must be a bonafide Himachali/ Himachal domicile certificate holder
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        12. Candidate must bring his original certificates and 2 sets of self-attested photocopies of all the
+        certificates at the time of Physical Efficiency Test (PET) as well as while appearing for Document
+        Verification/evaluation.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        13. <b>Candidate must ensure that the online application form is filled and fee is paid before the last date
+          and
+          time i.e. 31st October, 2021 by 08:00 am. After this date & time, no fee will be accepted.</b>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        14. Fee once paid through any mode of payment will not be refunded.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        15. After depositing fee through online mode, candidates should wait for the message on their screen that
+        “Payment is successful”. In case of failure of payment/non-receipt of the above message, candidates are advised
+        to deposit their fee again.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        16. In case candidate fails to deposit the payment, their application will be rejected.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        17. Candidates are advised to provide their own mobile number and e-mail, which is easily accessible to them.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        18. The mobile number provided by you will be used for sending SMS alerts regarding recruitment process from
+        time to time.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        19. Candidates will have the option to SAVE their application form and they will be able to resume from where
+        they left off at a later convenient time.
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        20. <b>The selection process by the HP Police Recruitment Board is transparent and purely merit based. Hence,
+          the
+          candidates are advised to beware of the unscrupulous elements, racketeers, touts who may misguide them with
+          false promises of getting selected for the job on illegal consideration.</b>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]='popUpForm'>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-group">
+                <input type="checkbox" formControlName="confirmationCheck"
+                  class="form-check-input undertakingCheck ml-1" id="exampleCheck13232"
+                  (change)='checkInstructions($event.target.checked)'>
+                <label class="form-check-label undertakingLabel pl-4" for="exampleCheck13232">
+                  I've read and understood all the instructions and guidelines mentioned above
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2" style="float: right;">
+              <button class="btn btn-dark uppercase ml-2 w-20 ft-weight-bold" data-toggle="tooltip"
+                (click)="modal.close('Save click')">Ok</button>
+
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</ng-template>
+
+
+
+<ng-template #applicationPreview let-modal data-keyboard="false" data-backdrop="static">
+  <div class="modal-header login-header  border-top-left-radius border-top-right-radius">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center uppercase ft-weight-bold  position-relative" style="padding-top: none;">Application
+          Preview !!
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]='applicationPreviewForm'>
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">General Details</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-md-6 ">
+          <div class="form-group">
+            <label for="fullName">Full Name of Candidate</label>
+            <input name="fullName" id="fullName" type="text" class="form-control" placeholder="Full Name of candidate"
+              formControlName="fullName">
+          </div>
+        </div>
+
+        <div class="col-md-6 ">
+          <div class="form-group">
+            <label>Himachali Bonafide Certificate Number</label>
+            <input name="fullName" type="text" class="form-control" formControlName="hpBonafideNo">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Father's Name</label>
+            <input name="fatherName" type="text" class="form-control" formControlName="fatherName"
+              placeholder="Father's Name">
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="dob" name="dob">
+              <!-- <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"> <i
+                    class="fa fa-calendar" aria-hidden="true"></i></button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Identification Mark</label>
+            <input name="identificationMark" type="text" class="form-control" formControlName="identificationMark"
+              placeholder="Identification Mark">
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Gender</label><br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline51" name="gender" mdbInput
+                formControlName="gender" (change)='selectGender("M")' value="2">
+              <label class="custom-control-label" for="defaultInline51">Male</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline122" name="gender"
+                formControlName="gender" mdbInput (change)='selectGender("F")' value="1">
+              <label class="custom-control-label" for="defaultInline122">Female</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Aadhaar Card</label>
+            <input type="text" class="form-control" formControlName="aadhaar" name="aadhaar">
+            <!-- <div class="custom-control custom-radio custom-control-inline">
+              <input type="text" class="custom-control-input" name="aadhaar" mdbInput formControlName="aadhaar">
+             </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">12th School Details</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Name of Board</label>
+            <select class="form-control" formControlName="tweQualificationBoardId" name="tweQualificationBoardId">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of twelthBoardList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Status</label><br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline1" name="tweQualificationStatus"
+                mdbInput formControlName="tweQualificationStatus" (change)='getSelectedStatus("A")' value="A">
+              <label class="custom-control-label" for="defaultInline1">Appearing</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline2" name="tweQualificationStatus"
+                formControlName="tweQualificationStatus" mdbInput (change)='getSelectedStatus("P")' value="P">
+              <label class="custom-control-label" for="defaultInline2">Passed</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Certificate Number</label>
+            <input type="text" class="form-control" formControlName="tweQualificationCertificateNumber"
+              placeholder="Certificate Number" [readonly]='enableCertificateDetails'>
+            <div
+              *ngIf="applicationForm.controls.tweQualificationCertificateNumber.errors && submitApplicationForm==true">
+              <span *ngIf="applicationForm.controls.tweQualificationCertificateNumber.errors.minlength" class="error">
+                Minimum 3 and maximum 15 characters are allowed</span>
+              <span *ngIf="applicationForm.controls.tweQualificationCertificateNumber.errors.maxlength" class="error">
+                Minimum 3 and maximum 15 characters are allowed</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Date of Issue of Certificate</label>
+            <input type="text" class="form-control" formControlName="tweQualificationDateOfIssue"
+              name="tweQualificationDateOfIssue">
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">10th School Details</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Name of Board</label>
+            <select class="form-control" formControlName="theQualificationBoardId" name="theQualificationBoardId">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of tenthBoardList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Date of Issue of Certificate</label>
+            <input type="text" class="form-control" formControlName="theQualificationDateOfIssue"
+              name="theQualificationDateOfIssue" (input)='getDob()'>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Certificate Number</label>
+            <input type="text" class="form-control" formControlName="theQualificationCertificateNumber"
+              name="theQualificationCertificateNumber" placeholder="Certificate Number">
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">Additional Qualification</label>
+          <hr>
+        </div>
+      </div>
+      <!-- <div class="row"> -->
+      <div class="row" *ngIf="additionalQualificationDetails && additionalQualificationDetails.length >0">
+        <div class="col-md-12">
+          ` <div class="table-responsive">
+            <table class="table table-bordered table-striped w-nospace">
+              <thead>
+                <tr>
+                  <th>Name of Course</th>
+                  <th>Year of Passing</th>
+                  <th>Name of Institute</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of additionalQualificationDetails">
+                  <td>{{x.otherQualificationscourseName}}</td>
+                  <td>{{x.yearOfPassing}}</td>
+                  <td>{{x.nameOfInstitute}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- <div class="col-md-12">
+          ` <div class="table-responsive">
+            <table class="table table-bordered table-striped w-nospace">
+              <thead>
+                <tr>
+                  <th>Name of Course</th>
+                  <th>Year of Passing</th>
+                  <th>Name of Institute</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of additionalQualificationDetails">
+
+                  <td>{{x.yearOfPassing}}</td>
+                  <td>{{x.nameOfInstitute}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> -->
+        <!-- </div> -->
+        <!-- <div class="col-md-4 ">
+          <div class="form-group">
+            <label>Name of Course</label>
+            <select class="form-control" formControlName="otherQualificationscourseId"
+              name="otherQualificationscourseId" [ngClass]="{'form-submitted': submitApplicationForm}">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of qualificationList" [value]=x.id>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>Year of Passing</label>
+            <select class="form-control" formControlName="otherQualificationsYearOfPassing"
+              name="otherQualificationsYearOfPassing" [ngClass]="{'form-submitted': submitApplicationForm}">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of yearArray">{{x.year}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4  ">
+          <div class="form-group">
+            <label>Name of Institute/Board/University</label>
+            <input type="text" class="form-control" formControlName="otherQualificationsNameOfInstitute"
+              placeholder="Name of Institute"> 
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <button class="bg-red btn btn-primary">Add More
+              Qualification</button>
+          </div>
+        </div> -->
+
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">Correspondence Address</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>State</label>
+            <select class="form-control" formControlName="corAddressState" name="corAddressState"
+              (change)='getSelectCorState($event.target.value)'>
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of statesList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>District</label>
+            <select class="form-control" formControlName="corAddressDistrict" name="corAddressDistrict"
+              (change)='getSelectDistrict($event.target.value)'>
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of corDistrictList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Full Address (House Number/Street/Landmark/Village names etc.)</label>
+            <textarea rows="3" style="width:100%" formControlName="corAddressFullAddress" name="corAddressFullAddress"
+              placeholder="Full Address (House Number/Street/Landmark/Village names etc.)"></textarea>
+
+          </div>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">Permanent Address (as per the Himachali bonafide certificate)</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>District</label>
+            <select class="form-control" formControlName="perAddressDistrict" name="perAddressDistrict"
+              (change)='getPermanentDistrict($event.target.value)'>
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of districtList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>Tehsil</label>
+            <select class="form-control" formControlName="perAddressTehsil" name="perAddressTehsil">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of permanentTehsilList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4  ">
+          <div class="form-group">
+            <label>Block/Town</label>
+            <select class="form-control" formControlName="perAddressBlock" name="perAddressBlock"
+              (change)='getSelectedPermBlock($event.target.value)'>
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of permanentBlockList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Panchayat/Ward</label>
+            <select class="form-control" formControlName="perAddressPanchayat" name="perAddressPanchayat">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of permanentPanchayatList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Full Address (House Number/Street/Landmark/Village names etc.)</label>
+            <textarea rows="3" style="width:100%" formControlName="perAddressFullAddress" name="perAddressFullAddress"
+              placeholder="Full Address (House Number/Street/Landmark/Village names etc.)"></textarea>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <!-- <hr>x``` -->
+          <label class="header-font">Post Applied for</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline112" name="postAppliedFor"
+                formControlName="postAppliedFor" mdbInput (change)='postAppliedFor("General Duty")' value="G">
+              <label class="custom-control-label" for="defaultInline112">General Duty</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline" *ngIf="enableDriverPost">
+              <input type="radio" class="custom-control-input" formControlName="postAppliedFor" id="defaultInline223"
+                name="postAppliedFor" mdbInput (change)='postAppliedFor("Driver")' value="D">
+              <label class="custom-control-label" for="defaultInline223">Driver</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row pt-2" *ngIf="enableDriverDetails">
+        <div class="col-md-12">
+          <label class="header-font">Driving License Details</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row" *ngIf="enableDriverDetails">
+        <div class="col-md-6 ">
+          <div class="form-group">
+            <label>DL Number</label>
+            <input type="text" class="form-control" formControlName="drivingLicenseDetailsDlNumber"
+              placeholder="DL Number">
+
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="form-group">
+            <label>Issuing Authority</label>
+            <input type="text" class="form-control" formControlName="drivingLicenseDetailsIssuingAuthority"
+              placeholder="Issuing Authority">
+
+          </div>
+        </div>
+
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>Type of Vehicle</label><br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline1121"
+                name="drivingLicenseDetailsVehicleType" formControlName="drivingLicenseDetailsVehicleType" mdbInput>
+              <label class="custom-control-label" for="defaultInline1121">LMV</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline1212"
+                name="drivingLicenseDetailsVehicleType" formControlName="drivingLicenseDetailsVehicleType" mdbInput>
+              <label class="custom-control-label" for="defaultInline1212">HMV</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>Date of Issue</label>
+            <input type="date" class="form-control" formControlName="drivingLicenseDetailsDateIssue"
+              placeholder="Date of Issue">
+
+          </div>
+        </div>
+
+        <div class="col-md-4 ">
+          <div class="form-group">
+            <label>Validity Date</label>
+            <input type="date" class="form-control" formControlName="drivingLicenseDetailsValidateDate"
+              placeholder="Validity Date">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">Category/Sub-category</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" formControlName="categoryId" name="categoryId"
+              (change)='getSelectedCategory($event.target.value)'>
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of categoryList" [value]='x.id'>{{x.name}}</option>
+            </select>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Sub-Category</label>
+            <select class="form-control" formControlName="subCategoryId" name="subCategoryId"
+              (change)='getSelectedSubCategory($event.target.value)'>
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of subCategoryList" [value]='x.id'>{{x.name}}</option>
+            </select>
+
+          </div>
+        </div>
+
+        <div class="col-md-4">
+
+          <div class="form-group">
+            <label>Post Availability</label><br>
+            <div class="postAvailability"
+              [ngClass]="{'gree': noPost === 'Available', 'red' : noPost === 'Not Available' }">{{noPost}}
+            </div>
+            <!-- <input type="text" class="form-control" formControlName="noPosts" readonly>
+            <label *ngIf="noPost">{{noPost}}</label> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">Photo/Signature</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 form-group ls-m3 rs-m3">
+          <label>Upload your latest passport size photo
+            <!-- <span class="text-danger ft-weight-semi">(.JPEG/.JPG/.PNG, max size 10kb to 200kb)*</span> -->
+          </label>
+          <!-- <div class="input-group">
+            <div class="custom-file mr-2">
+              <input type="file" class="custom-file-input" formControlName="photo" (change)="onFileChangePhoto($event)"
+                id="avatar">
+              <label class="custom-file-label" for="avatar">Choose photo</label>
+            </div>
+
+          </div> -->
+        </div>
+
+        <div class="col-md-6 form-group ls-m3 rs-m3" *ngIf="fileObjPhoto">
+          <img height="100" width="115" [src]="fileObjPhoto"
+            onerror="if (this.src != 'error.jpg') this.src = 'assets/images/default.png';">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 form-group ls-m3 rs-m3">
+          <label>Upload your signature
+            <!-- <span class="text-danger ft-weight-semi">(.JPEG/.JPG/.PNG, max size
+              4kb to 30kb)*</span> -->
+          </label>
+          <!-- <div class="input-group">
+            <div class="custom-file mr-2">
+              <input type="file" class="custom-file-input" formControlName="signature"
+                (change)="onFileChangeSignature($event)" id="avatar">
+              <label class="custom-file-label" for="avatar">Choose signature</label>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="col-md-6 form-group ls-m3 rs-m3" *ngIf="fileObjSignature">
+          <img height="100" width="115" [src]="fileObjSignature"
+            onerror="if (this.src != 'error.jpg') this.src = 'assets/images/default.png';">
+        </div>
+
+      </div>
+
+      <div class="row pt-2">
+        <div class="col-md-12">
+          <label class="header-font">Undertaking</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="form-group">
+            <input type="checkbox" formControlName="undertakingreadInstruction"
+              class="form-check-input undertakingCheck ml-1" id="exampleCheck1">
+            <label class="form-check-label undertakingLabel pl-4" for="exampleCheck1">I certify that I have
+              read
+              the instructions for filling the form.</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="form-group">
+            <input type="checkbox" formControlName="undertakinginfoCorrect"
+              class="form-check-input undertakingCheck ml-1" id="exampleCheck132">
+            <label class="form-check-label undertakingLabel pl-4" for="exampleCheck132">I certify that
+              information given above is true to the best of my knowledge and belief. I understand that
+              willful misrepresentation of any fact will lead to rejection of my candidature for the post of
+              constable in HP Police Department at any stage.
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 ">
+          <div class="form-group">
+            <label>Have you ever been accused/arrested/convicted in a criminal case?</label><br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline15" name="undertakingisAccused" mdbInput
+                formControlName="undertakingisAccused" value="Y">
+              <label class="custom-control-label" for="defaultInline15">Yes</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline14" name="undertakingisAccused" mdbInput
+                formControlName="undertakingisAccused" value="N">
+              <label class="custom-control-label" for="defaultInline14">No</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 ">
+
+          <div class="form-group">
+            <label>If any criminal proceeding pending against you?</label><br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline12" name="undertakingisProceeding"
+                mdbInput (change)='getFirStatus("Y")' formControlName="undertakingisProceeding" value="Y">
+              <label class="custom-control-label" for="defaultInline12">Yes</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" class="custom-control-input" id="defaultInline13" name="undertakingisProceeding"
+                mdbInput formControlName="undertakingisProceeding" (change)='getFirStatus("N")' value="N">
+              <label class="custom-control-label" for="defaultInline13">No</label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row pt-2" *ngIf="enableFirDetails">
+        <div class="col-md-12">
+          <label class="header-font">FIR Details</label>
+          <hr>
+        </div>
+      </div>
+      <div class="row" *ngIf="enableFirDetails">
+        <div class="col-md-6 ">
+          <div class="form-group">
+            <label>State</label>
+            <select class="form-control" formControlName="undertakingfirDetailsState" name="undertakingfirDetailsState"
+              (change)='getSelectedFirState($event.target.value)'>
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of statesList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="form-group">
+            <label>District</label>
+            <select class="form-control" formControlName="undertakingfirDetailsDistrict"
+              name="undertakingfirDetailsDistrict">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of firDistrictList" [value]='x.id'>{{x.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Police Station</label>
+            <input type="text" class="form-control" formControlName="undertakingfirDetailsPloiceStation"
+              placeholder="Police Station">
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Year</label>
+            <select class="form-control" formControlName="undertakingfirDetailsYear" name="undertakingfirDetailsYear">
+              <option value="" selected disabled hidden>Select value</option>
+              <option *ngFor="let x of yearArray">{{x.year}}</option>
+            </select>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>FIR Number</label>
+            <input type="text" class="form-control" formControlName="undertakingfirDetailsFirNumber"
+              placeholder="FIR Number">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Any other details</label>
+            <textarea rows="3" style="width:100%" formControlName="anyInfo" name="anyInfo"
+              placeholder="Any other details"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label><span class="text-danger ft-weight-semi">Note*: You can not make any change in the application form
+                after final submission.</span></label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Back</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('Open Consent')">Submit</button>
+  </div>
+</ng-template>
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        Do you really want to submit the form? Information once submitted cannot be changed.
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      [disabled]="otpFormisvalid" (click)="modal.close('Submit application')">Submit</button>
+  </div>
+</ng-template>

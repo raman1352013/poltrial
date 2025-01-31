@@ -1,0 +1,218 @@
+<div class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header [headerTitle]="header" [save]='save' [payment]='payment'></app-main-header>
+      <div class="row pt-5">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="login-header border-top-left-radius border-top-right-radius ">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative">Payment Confirmation
+              </h2>
+            </div>
+            <div class="card-body">
+              <form [formGroup]='applicationForm'>
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Applicant Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label for="applicationNo">Application ID</label>
+                      <input name="applicationNo" id="applicationNo" type="text" class="form-control"
+                        placeholder="Applicant Id" formControlName="applicationNo">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">Full Name</label>
+                      <input name="name" id="name" type="text" class="form-control" formControlName="name"
+                        placeholder="Full Name">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="msisdn">Mobile No.</label>
+                      <input name="msisdn" id="msisdn" type="text" class="form-control" formControlName="msisdn"
+                        placeholder="Mobile No.">
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="msisdn">Father's Name</label>
+                      <input name="msisdn" id="msisdn" type="text" class="form-control" formControlName="msisdn"
+                        placeholder="Father's Name">
+                    </div>
+                  </div> -->
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Email Id</label>
+                      <input name="email" id="email" type="text" class="form-control" formControlName="email"
+                        placeholder="Email Id">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="district">District</label>
+                      <input name="district" id="district" type="district" class="form-control"
+                        formControlName="district" placeholder="District">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="category">Category</label>
+                      <input name="category" id="category" type="text" class="form-control" formControlName="category"
+                        placeholder="Category">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="subCategory">Sub Category</label>
+                      <input name="subCategory" id="subCategory" type="text" class="form-control"
+                        formControlName="subCategory" placeholder="Sub Category">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="postAppliedFor">Post Applied For</label>
+                      <input name="postAppliedFor" id="postAppliedFor" type="text" class="form-control"
+                        formControlName="postAppliedFor" placeholder="Post Applied For">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Payment Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label for="applicationFee">Application Fee</label>
+                      <input name="applicationFee" id="applicationFee" type="text" class="form-control"
+                        placeholder="Application Fee" formControlName="applicationFee">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="covidFee">COVID-19 Protocol Implementation Fee</label>
+                      <input name="covidFee" id="covidFee" type="text" class="form-control" formControlName="covidFee"
+                        placeholder="COWID-19 Protocol Implementation Fee">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="totalFee">Total Fee to be paid</label>
+                      <input name="totalFee" id="totalFee" type="text" class="form-control" formControlName="totalFee"
+                        placeholder="Total Fee to be paid">
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-12">
+                    <div class="form-group">
+                      <label><span class="text-danger ft-weight-semi">Note*: Fee once paid will not be
+                          refunded and you can not make any change in the application form after payment.</span></label>
+
+                    </div>
+                  </div> -->
+                </div>
+
+
+              </form>
+              <div class="row">
+                <div class="col-md-12">
+                  <label><span class="text-danger ft-weight-semi">Note*: Please read carefully before choosing payment
+                      option in the next screen:
+                    </span></label>
+                </div>
+                <div class="col-md-12">
+                  The online mode is the preferred mode of payment using Debit Card/ Credit Card/ RuPay Debit Card/
+                  RuPay Credit Card/ Bhim UPI QR/ UPI/ Wallets or Net Banking. In the online mode, the application form
+                  can be submitted and printed instantly.
+                </div>
+                <div class="col-md-12 mt-2 mb-2">
+                  OR
+                </div>
+                <div class="col-md-12">
+                  Candidates can also pay through offline mode by depositing cash in the bank branch. Use cash mode by
+                  depositing cash in following banks (Using this mode, challan will be generated which you are required
+                  to take to the bank):
+                </div>
+                <div class="col-md-12">
+                  1. Indian Bank
+                </div>
+                <div class="col-md-12">
+                  2. ICICI Bank
+                </div>
+                <div class="col-md-12">
+                  3. Bank of India
+                </div>
+                <div class="col-md-12">
+                  4. Airtel Payments Bank
+                </div>
+                <div class="col-md-12 mt-2 mb-2">
+                  OR
+                </div>
+                <div class="col-md-12">
+                  For depositing fee through cash in other banks, you can use NEFT payment option where a slip (NEFT
+                  Advice For Payer) will be generated which is required to be taken to the bank.
+                </div>
+              </div>
+              <!-- <div class="row">
+                <div class="col-md-12">
+                  2. The candidates can also pay through NEFT mode. Candidate can print their payment challan and
+                  deposit the cash
+                  amount at any of the nearest bank branch.
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  3. The candidates can also pay their fee through cash challan mode at the nearest branch of any of the
+                  banks
+                  available under cash options mode.
+                </div>
+              </div> -->
+            </div>
+            <div class="card-footer">
+              <div class="field-sec text-right">
+                <!-- <button *ngIf="disableSubmit" class="btn btn-primary uppercase mr-1" (click)="goToLogin()">Save</button> -->
+                <!-- <button class="btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                  (click)="goToApplication()">Cancel</button> -->
+                <button class="bg-red btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)='goToUrl()'>Pay
+                  Now</button>
+                <!-- <button *ngIf="enablePayment" class="bg-red btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                  (click)="makePayment()">Payment</button>
+
+                <button *ngIf="enablePrint" class="bg-red btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                  (click)="print()">Print</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

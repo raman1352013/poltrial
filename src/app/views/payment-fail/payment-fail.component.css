@@ -1,0 +1,22 @@
+.login-header {
+    height: 60px;
+    background: #dc3545;
+    color: #FFFFFF;
+    padding-top: 20px;
+    text-align: center !important;
+}
+
+h1 {
+    font-family: Bookman,
+        URW Bookman L,
+        serif;
+    font-size: 34;
+    letter-spacing: 3px;
+    color: green;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.subHeading {
+    text-align: justify;
+}

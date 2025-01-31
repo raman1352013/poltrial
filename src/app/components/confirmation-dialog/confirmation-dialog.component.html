@@ -1,0 +1,34 @@
+<div class="login-header  border-top-left-radius border-top-right-radius">
+  <h4 class="modal-title">{{ title }}</h4>
+  <!-- <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+</div>
+<div class="modal-body">
+  {{ message }}
+</div>
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-danger" (click)="decline()">{{ btnCancelText }}</button>
+  <button type="button" class="btn btn-primary" (click)="accept()">{{ btnOkText }}</button> -->
+  <button type="button" class="btn btn-primary" (click)="accept()">Ok</button>
+</div>
+
+<!-- <ng-template let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        Do you really want to submit the form? Information once submitted cannot be changed.
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      [disabled]="otpFormisvalid" (click)="modal.close('Submit application')">Submit</button>
+  </div>
+</ng-template> -->

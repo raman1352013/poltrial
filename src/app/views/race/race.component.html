@@ -1,0 +1,292 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <!-- <div class="row justify-content-center pt-4">
+        <u><b></b></u>
+      </div> -->
+
+      <div class="row pt-3">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="other-header border-top-left-radius border-top-right-radius ">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative">Physical Efficiency Test<br>(Race)
+              </h2>
+            </div>
+            <div class="card-body">
+              <zxing-scanner (scanSuccess)="onCodeResult($event)" *ngIf="enableScanner"></zxing-scanner>
+
+
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="scanQr()">Scan
+                    Admin Card</button>
+                </div>
+
+                <div class="col-md-12 text-center pt-3 pb-3">
+                  <h2>OR</h2>
+                </div>
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-4">
+                  <form [formGroup]='searchForm'>
+                    <div class="form-group">
+                      <!-- <label></label> -->
+                      <input name="applicationNumber" type="text" class="form-control"
+                        formControlName="applicationNumber" placeholder="Application Id">
+                    </div>
+                  </form>
+                </div>
+
+                <div class="col-md-4">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                    (click)="getApplicationDetails()">Verify</button>
+                </div>
+              </div>
+
+              <!-- <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Total Candidates</label>
+                    <hr>
+                  </div>
+                </div> -->
+              <form [formGroup]='manageAdmitCardsForm' *ngIf="enableForm">
+                <!-- <div class="row pt-4">
+                  <div class="col-md-12">
+                    <label class="header-font">Candidate Details</label>
+                    <hr>
+                  </div>
+                </div> -->
+                <div class="row pt-4">
+                  <div class="col-md-6">
+                    <label class="header-font">Candidate Details</label>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-right">
+                      <button class="bg-red btn btn-danger uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="markAbsent()">Absent</button>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <hr>
+                  </div>
+                </div>
+                <div class="row pt-4">
+                  <div class="col-md-6">
+                    <label>Photo</label><br>
+                    <div class="photo-sig">
+
+                      <img class="photo-sig-img" [src]='photo' alt="logo">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Signature</label><br>
+                    <div class="photo-sig">
+                      <img class="photo-sig-img" [src]='signature' alt="logo">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Application ID</label>
+                      <input name="applicationNo" type="text" class="form-control" formControlName="applicationNo"
+                        readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Bonafide District</label>
+                      <input name="district" type="text" class="form-control" formControlName="district" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Full name</label>
+                      <input name="name" type="text" class="form-control" formControlName="name" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gorkha</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="isGorkha" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Father's Name</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="fatherName" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Date of Birth</label>
+                      <input name="dob" type="text" class="form-control" formControlName="dob" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gender</label>
+                      <input name="gender" type="text" class="form-control" formControlName="gender" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <input name="category" type="text" class="form-control" formControlName="category" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Sub Category</label>
+                      <input name="subCategory" type="text" class="form-control" formControlName="subCategory" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Post Applied For</label>
+                      <input name="postAppliedFor" type="text" class="form-control" formControlName="postAppliedFor"
+                        readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Registered Mobile No.</label>
+                      <input name="mobileNo" type="text" class="form-control" formControlName="mobileNo" readonly>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Candidate Qualified for Race?</label>
+                    <hr>
+                    <label class="ft-weight-semi">Minimum qualified standard for male: 6 Mins 30 Secs and for female 4
+                      Mins 15 Secs </label>
+                  </div>
+                </div>
+
+
+
+              </form>
+              <!-- <div class="row"> -->
+              <div class="field-sec text-center" *ngIf="enableForm">
+                <!-- <button class="bg-red btn btn-danger uppercase ml-2 w-20 ft-weight-bold"
+                  (click)="markAbsent()">Absent</button> -->
+                <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                  (click)="confirmation('P')">Qualified</button>
+                <button class="bg-red btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                  (click)="confirmation('F')">Not Qualified</button>
+              </div>
+              <!-- </div> -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <strong>Race of Candidate</strong>
+      </div>
+      <!-- <div class="col-md-6 pt-2">
+        <div class="form-group">
+          <label>Inches A</label> : {{inchesA}}
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Inches B</label>: {{inchesB}}
+        </div>
+      </div> -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 pt-2">
+        <div class="form-group">
+          <label>Status</label> : {{status == 'P' ? 'Qualified' : 'Not Qualified'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('first consent')">Submit</button>
+  </div>
+</ng-template>
+
+<ng-template #secondConsentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      Do you really want to submit the form? Information once submitted cannot be changed.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('second consent')">Submit</button>
+  </div>
+</ng-template>
+
+<ng-template #confFormPopUP let-modal data-keyboard="false" data-backdrop="static">
+  <div class="login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm!!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="remarksForm">
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>
+            <span class="text-danger ft-weight-semi">Note</span>: Do you really want to submit the form? Information
+            once submitted cannot be changed.
+          </label><br>
+          <label>Remarks
+            <span class="text-danger ft-weight-semi">*</span>
+          </label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="remarks">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer" style="justify-content: right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      [disabled]="!remarksForm.valid" (click)="modal.close('Save click')">Submit</button>
+  </div>
+</ng-template>

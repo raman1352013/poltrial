@@ -1,0 +1,26 @@
+<main class="page-content">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content">
+      <app-main-header [headerTitle]="header"></app-main-header>
+      <hr>
+      <form [formGroup]='profileForm'>
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label>Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="userName" name="userName" readonly>
+            </div>
+          </div>
+          <div class="col-md-6 form-group">
+            <label>Email</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="email" name="email" readonly>
+              <!-- <input type="text" class="form-control" formControlName="registrationNo" name="registrationNo"> -->
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

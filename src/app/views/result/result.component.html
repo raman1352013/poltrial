@@ -1,0 +1,144 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <div class="row justify-content-center pt-4">
+        <u><b>Result</b></u>
+      </div>
+      <!-- <div class="row">
+
+      </div> -->
+      <form [formGroup]='searchForm' class="pt-4">
+        <div class="row">
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>District</label>
+              <select class="form-control" formControlName="districtId" name="districtId"
+                [attr.disabled]='disableDistrict ? true : null'>
+                <option value="" selected disabled hidden>Select value</option>
+                <option *ngFor="let x of districtList" [value]='x.id'>{{x.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Date <span class="text-danger ft-weight-semi">*</span></label>
+              <input type="date" class="form-control" formControlName="petDate" name="petDate" [min]="minDate">
+              <div *ngIf="searchForm.controls.petDate.errors && submitSearchForm==true">
+                <span *ngIf="searchForm.controls.petDate.errors.required" class="error">
+                  Please select date</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Action <span class="text-danger ft-weight-semi">*</span></label>
+              <select class="form-control" formControlName="action" name="action">
+                <option value="" selected disabled hidden>Select value</option>
+                <option *ngFor="let x of actionList" [value]='x.id'>{{x.name}}</option>
+              </select>
+              <div *ngIf="searchForm.controls.action.errors && submitSearchForm==true">
+                <span *ngIf="searchForm.controls.action.errors.required" class="error">
+                  Please select action</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </form>
+      <div class="row jultify-right">
+        <div class="col-md-4  jultify-right">
+          <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold right-align"
+            (click)='searchApplication()'>Search</button>
+        </div>
+      </div>
+      <!-- <div class="pt-4 mr-5 ml-5"> -->
+      <!-- <div class="row"> -->
+      <div class="row pt-4">
+
+      </div>
+      <div class="horizontal-scrolling">
+        <table class="table table-bordered w-nospace table-hover" *ngIf="summaryList && summaryList.length>0">
+          <thead>
+            <tr>
+              <th class="bg-col-body cardText">Application Number</th>
+              <th class="bg-col-body cardText">Name</th>
+              <!-- <th class="bg-col-body cardText">Phone No.</th> -->
+              <th class="bg-col-body cardText">District</th>
+              <th class="bg-col-body cardText">Gender</th>
+
+              <th class="bg-col-body cardText">Father Name</th>
+              <th class="bg-col-body cardText">DOB</th>
+
+              <th class="bg-col-body cardText">Category</th>
+              <th class="bg-col-body cardText">Sub-Category</th>
+              <th class="bg-col-body cardText">Post Applied For</th>
+          </thead>
+
+          <tbody>
+            <tr data-toggle="collapse" *ngFor="let x of summaryList">
+              <td>{{x.applicationNumber}}</td>
+              <td>{{x.candidateName}}</td>
+              <!-- <td>{{x.msisdn}}</td> -->
+              <td>{{x.districtName}}</td>
+              <td>{{x.gender}}</td>
+
+              <td>{{x.fatherName}}</td>
+              <td>{{x.dob}}</td>
+
+              <td>{{x.category}}</td>
+              <td>{{x.subCategory}}</td>
+              <td>{{x.postAppliedFor == 'G' ? 'General Duty' : 'Driver'}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <!-- <ngb-pagination [collectionSize]="summaryList.length" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="7"
+        [rotate]="true" (pageChange)="onPageChange(page)" *ngIf="summaryList && summaryList.length>0">
+      </ngb-pagination> -->
+    </div>
+  </div>
+</main>
+
+<ng-template #attendanceRemarks let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm!!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]='confirmationForm'>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Remarks</label>
+          <input type="text" class="form-control" formControlName="remarks" placeholder="Remarks">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-danger uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Close</button>
+    <button class="btn btn-success uppercase mr-1" data-dismiss="modal" (click)="modal.close('Remarks Ok')"
+      [disabled]='enableResedOTP'>Ok</button>
+  </div>
+</ng-template>
+
+<ng-template #secondConsentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      Do you really want to send the SMS?.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('Send SMS')">Submit</button>
+  </div>
+</ng-template>

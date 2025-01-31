@@ -1,0 +1,33 @@
+.dot {
+    height: 45px;
+    width: 45px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    padding-top: 8px;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.progress {
+    /* font-size: 16px; */
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+.done {
+    background-color: rgb(2, 179, 2);
+}
+
+.initial {
+    background-color: #bbb;
+}
+
+.progress-icon {
+    float: right !important;
+    /* padding-top: 10px; */
+    font-size: 33px !important;
+}
+
+
+
+.font-size33 {}

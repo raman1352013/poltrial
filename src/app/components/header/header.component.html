@@ -1,0 +1,202 @@
+<ng-container></ng-container>
+
+<header class="fixed-top">
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <div class="log-sec">
+        <img src="assets/Himachal_Pradesh_Police_Logo.png" alt="logo" class="logo">
+      </div>
+      <a class="nav-icon" id="show-sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+    <div class="pdr-5 d-flex align-items-center">
+
+      <!-- <div class="mr-2 p-2 other-item dropdown">
+        <a href="#" class="text-sm" onclick="return false;" data-toggle="dropdown" title="Other Static links" placement="bottom">
+          <em class="fas fa-ellipsis-v"></em>
+          <span class="m-none"> Other Menu</span>
+        </a>
+        <ul class="dropdown-menu ">
+          <li class="dropdown-item">
+            <a href="http://cgpdtm.attendance.gov.in/" onclick="return false;" target="_blank">Attendance</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="#" onclick="return false;" target="_blank">Internal Non-Propeitory Names</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="#" onclick="return false;">Dictionary</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="https://www.wipo.int/classifications/nice/en/" target="_blank">Nice Classification</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="http://ipindia.nic.in/writereaddata/images/pdf/list_iin-08february2012.pdf" target="_blank">Non-Proprietory</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="#" onclick="return false;" onclick="return false;" routerLink="Home/Prohibited-Trademark">Prohibited Trade Mark</a>
+          </li>
+          <li class="dropdown-item">
+            <a href=" https://www.wipo.int/classifications/nivilo/vienna/index.htm" target="_blank">Viena Codification</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="#" onclick="return false;">WellKnown Marks</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="http://www.ipindia.nic.in/writereaddata/Portal/IPOAct/1_107_1_new-elements-in-the-trademarks-act-1999act.pdf" onclick="return false;"
+              target="_blank">Trademark Act 1999</a>
+          </li>
+          <li class="dropdown-item">
+            <a href="http://www.ipindia.nic.in/writereaddata/Portal/IPORule/1_69_1_Trade_Marks_Rules_2017.pdf" onclick="return false;"
+              target="_blank">TM Rules 2017</a>
+          </li>
+
+        </ul>
+      </div> -->
+
+      <div class="nav-item dropdown col-blk">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Menu
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- <a class="dropdown-item" id="header-profile" href="#" onclick="return false;">
+            <em class="fa fa-eye"></em> View Profile</a> -->
+          <a class="dropdown-item" id="header-change-password" (click)='forgotPassword()'>
+            <em class="fa fa-edit"></em> Change Password</a>
+          <a class="dropdown-item" id="header-logout" (click)="logOut()" href="#" onclick="return false;">
+            <em class="fa fa-sign-out-alt"></em> Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Change Password modal -->
+<div class="modal fade" id="change-pwd" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h2 class="modal-title heading">Change Password</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="changePasswordForm">
+          <div class="row">
+            <div class="col-md-12 form-group">
+              <label>Old Password</label>
+              <div class="input-group">
+                <input type="changePasswordForm" class="form-control" formControlName="oldPassword"
+                  (keyup)="onOldPasswordKey($event)">
+                <div *ngIf="changePasswordForm.controls.oldPassword.errors && formSubmitted==true">
+                  <span *ngIf="changePasswordForm.controls.oldPassword.errors.required" class="error">
+                    Please enter user name</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 ">
+              <h6 class="uppercase brd-head">Update Password</h6>
+            </div>
+
+
+            <div class="col-md-6 form-group">
+
+              <label>New Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" formControlName="newPassword" (keyup)="onNewPasswordKey()">
+                <div *ngIf="changePasswordForm.controls.newPassword.errors && formSubmitted==true">
+                  <span *ngIf="changePasswordForm.controls.newPassword.errors.required" class="error">
+                    Please enter new password</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+              <label>Confirm Password</label>
+              <div class="input-group">
+                <input type="text" class="form-control" formControlName="conPassword" (keyup)="onConPassword()">
+                <div *ngIf="changePasswordForm.controls.conPassword.errors && formSubmitted==true">
+                  <span *ngIf="changePasswordForm.controls.conPassword.errors.required" class="error">
+                    Please enter confirm password</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='submit()'
+          [disabled]="formisvalid">Update</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #forgotPasswordPopUp let-modal>
+  <div class="modal-header login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Change Password!!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="changePasswordForm">
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>Old Password</label>
+          <div class="input-group">
+            <input type="password" class="form-control" formControlName="oldPassword">
+            <div *ngIf="changePasswordForm.controls.oldPassword.errors && formSubmitted==true">
+              <span *ngIf="changePasswordForm.controls.oldPassword.errors.required" class="error">
+                Please enter old password</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 ">
+          <h6 class="uppercase brd-head">Update Password</h6>
+        </div>
+
+
+        <div class="col-md-6 form-group">
+
+          <label>New Password</label>
+          <div class="input-group">
+            <input type="password" class="form-control" formControlName="newPassword">
+            <div *ngIf="changePasswordForm.controls.newPassword.errors && formSubmitted==true">
+              <span *ngIf="changePasswordForm.controls.newPassword.errors.required" class="error">
+                Please enter new password</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 form-group">
+          <label>Confirm Password</label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="conPassword">
+            <div *ngIf="changePasswordForm.controls.conPassword.errors && formSubmitted==true">
+              <span *ngIf="changePasswordForm.controls.conPassword.errors.required" class="error">
+                Please enter confirm password</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary uppercase mr-1" (click)="modal.close('Close click')">
+      Cancel</button>
+    <!-- [disabled]="!mobileForm.valid" -->
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold"
+      (click)="modal.close('Save click')">Submit</button>
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button> -->
+  </div>
+</ng-template>

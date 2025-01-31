@@ -1,0 +1,357 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <!-- <div class="row justify-content-center pt-4">
+        <u><b></b></u>
+      </div> -->
+
+      <div class="row pt-3 ">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-9">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="login-header border-top-left-radius border-top-right-radius">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative">Manage Admit Cards - {{district}}
+              </h2>
+            </div>
+            <div class="card-body">
+              <form [formGroup]='manageAdmitCardsForm' *ngIf="enableForm">
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font" style="color: rgb(120, 121, 120);">Total
+                      Candidates({{scheduledDetails?.totalCandidateMaleGeneral + scheduledDetails?.totalCandidateFemale + scheduledDetails?.totalCandidateMaleDriver}})</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Male</label>
+                      <input name="totalDistrictCandidatesMale" type="text" class="form-control"
+                        formControlName="totalDistrictCandidatesMale">
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Female</label>
+                      <input name="totalDistrictCandidatesFemale" type="text" class="form-control"
+                        formControlName="totalDistrictCandidatesFemale">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Driver</label>
+                      <input name="totalCandidateMaleDriver" type="text" class="form-control"
+                        formControlName="totalCandidateMaleDriver">
+                    </div>
+                  </div>
+                </div>
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font" style="color: rgb(12, 173, 12);">Admit Card
+                      Generated({{scheduledDetails?.admitCardGeneratedMaleGeneral + scheduledDetails?.admitCardGeneratedFemale + scheduledDetails?.admitCardGeneratedMaleDriver}})</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Male</label>
+                      <input name="admitCardsGeneratedMale" type="text" class="form-control"
+                        formControlName="admitCardsGeneratedMale">
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Female</label>
+                      <input name="admitCardsGeneratedFemale" type="text" class="form-control"
+                        formControlName="admitCardsGeneratedFemale">
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Driver</label>
+                      <input name="admitCardGeneratedMaleDriver" type="text" class="form-control"
+                        formControlName="admitCardGeneratedMaleDriver">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font"
+                      style="color:
+                      red">Balance({{scheduledDetails?.admitCardBalanceMaleGeneral + scheduledDetails?.admitCardBalanceFemale + scheduledDetails?.admitCardBalanceMaleDriver}})</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Male</label>
+                      <input name="balanceMale" type="text" class="form-control" formControlName="balanceMale">
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Female</label>
+                      <input name="balanceFemale" type="text" class="form-control" formControlName="balanceFemale">
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Driver</label>
+                      <input name="admitCardBalanceMaleDriver" type="text" class="form-control"
+                        formControlName="admitCardBalanceMaleDriver">
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Generate Admit Cards for Written Exam</label>
+                    <hr>
+                  </div>
+                </div>
+              </form>
+              <form [formGroup]='generateAdmitCardForm' *ngIf="enableForm">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Date of Exam</label>
+                      <input type="text" class="form-control" formControlName="dateOfPet" name="dateOfPet"
+                        readonly>
+                      <div *ngIf="generateAdmitCardForm.controls.dateOfPet.errors &&
+                        submitApplicationForm==true">
+                        <span *ngIf="generateAdmitCardForm.controls.dateOfPet.errors.required" class="error">
+                          Please select date of PET</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Venue</label>
+                      <input name="gender" type="text" class="form-control" formControlName="venue" readonly>
+                      <div
+                        *ngIf="applicationForm.controls.tweQualificationBoardId.errors && submitApplicationForm==true">
+                        <span *ngIf="applicationForm.controls.tweQualificationBoardId.errors.required" class="error">
+                          Please enter twelfth qualification board</span>
+                      </div>
+                    </div> -->
+
+                    <div class="col-md-4">
+                      <div class="form-group"> 
+                        <div class="form-group">
+                          <label>Venue <span class="text-danger ft-weight-semi">*</span></label>
+                          <select class="form-control" formControlName="venue" name="venue"  (change)='getVenue($event)'>
+                            <option value="" selected disabled hidden>Select value</option>
+                            <option *ngFor="let x of venuDetails" [value]='x.id'>{{x.name}}</option>
+                          </select> 
+                        </div>
+                      </div>
+                    </div>
+
+
+                  <!-- <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Reporting Time(24 hr)</label>
+                      <ngb-timepicker formControlName="reportingTime" [spinners]="false"></ngb-timepicker>
+                       <div *ngIf="generateAdmitCardForm.controls.reportingTime.errors &&
+                        submitApplicationForm==true">
+                        <span *ngIf="generateAdmitCardForm.controls.reportingTime.errors.required" class="error">
+                          Please select reporting time</span>
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Already Scheduled for the Day</label>
+                      <input name="gender" type="text" class="form-control" formControlName="noCandidatesAvl" readonly>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="checkbox" formControlName="isDriver" class="form-check-input undertakingCheck ml-1"
+                        id="exampleCheck1" (change)='getDriverPost($event)'>
+                      <label class="form-check-label undertakingLabel pl-4 col-danger" for="exampleCheck1">
+                        Scheduling for the post of driver</label>
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="col-md-4" *ngIf="enableGender">
+                    <div class="form-group">
+                      <label>Gender</label><br>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline51" name="gender" mdbInput
+                          formControlName="gender" (change)='selectGender(2)' value="2">
+                        <label class="custom-control-label" for="defaultInline51">Male</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline122" name="gender"
+                          formControlName="gender" mdbInput (change)='selectGender(1)' value="1">
+                        <label class="custom-control-label" for="defaultInline122">Female</label>
+                      </div>
+                      <div *ngIf="generateAdmitCardForm.controls.gender.errors &&
+                        submitApplicationForm==true">
+                        <span *ngIf="generateAdmitCardForm.controls.gender.errors.required" class="error">
+                          Please select gender</span>
+                      </div>
+                    </div>
+                  </div> -->
+
+
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>No. of Candidates</label>
+                      <input name="gender" type="text" class="form-control" formControlName="noCandidates">
+                      <div *ngIf="generateAdmitCardForm.controls.noCandidates.errors &&
+                        submitApplicationForm==true">
+                        <span *ngIf="generateAdmitCardForm.controls.noCandidates.errors.required" class="error">
+                          Please enter no. of candidates</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+
+                    <div class="form-group">
+                      <!-- <label>Venue</label> -->
+                      <!-- <input name="gender" type="text" class="form-control" formControlName="venue"> -->
+
+                    </div>
+                  <!-- </div> -->
+                </div>
+              </form>
+              <div class="horizontal-scrolling" *ngIf="!enableForm">
+                <table class="table table-bordered w-nospace table-hover">
+                  <thead>
+                    <tr>
+                      <th class="bg-col-body cardText">District name</th>
+                      <th class="bg-col-body cardText">Center</th>
+                      <th class="bg-col-body cardText">Exam Date</th>
+                       <th class="bg-col-body cardText">Count</th>
+                      <!-- <th class="bg-col-body cardText">Female Candidate</th>
+                      <th class="bg-col-body cardText">Driver</th> -->
+                      <th class="bg-col-body cardText">Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr data-toggle="collapse" *ngFor="let x of responseAdmitCardSummary?.examSummary">
+                      <td>{{x.districtName}}</td>
+                      <td>{{x.examVenueName}}</td>
+                      <td>{{x.examDate}}</td>
+                       <td><a (click)='applicationDetails(x)'>{{x.count}}</a></td>
+                      <!-- <td><a>1</a></td>
+                      <td><a>1</a></td> -->
+                      <td><a (click)='confirmSendSMS(x)'>Send SMS</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- </div> -->
+
+              </div>
+              <div class="field-sec text-right">
+                <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="showDetails()"
+                  *ngIf="enableForm">Already Scheduled</button>
+                <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="confirmation()"
+                  *ngIf="enableForm">Generate Admit Cards</button>
+                <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="hideDetails()"
+                  *ngIf="!enableForm">Close</button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <strong><u>Details of Admit Cards for Written Exam</u></strong>
+      </div>
+      <div class="col-md-12 mt-2">
+        <div class="form-group">
+          <label>Date of Exam</label> : 03-07-2022
+        </div>
+      </div>
+      <div class="col-md-12 mt-2">
+        <div class="form-group">
+          <label>Venue</label> : {{venueName}}
+        </div>
+      </div>
+
+      <!-- <div class="col-md-12">
+        <div class="form-group">
+          <label>Reporting Time(24 hr)</label>: {{petTime}}
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-12">
+        <div class="form-group">
+          <label>Applied for driver post</label>: {{petTime}}
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-12" *ngIf="enableGender">
+        <div class="form-group">
+          <label>Gender</label>: {{gender == 1 ? 'Female': 'Male'}}
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Post</label>: {{enableGender == false ? 'Driver': 'General Duty'}}
+        </div>
+      </div> -->
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>No. of Candidates</label>: {{noOfCandidate}}
+        </div>
+      </div>
+
+      <!-- <div class="col-md-6">
+        <div class="form-group">
+          <label>Venue</label>: {{inchesB}}
+        </div>
+      </div> -->
+
+    </div>
+
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('first consent')">Submit</button>
+  </div>
+</ng-template>

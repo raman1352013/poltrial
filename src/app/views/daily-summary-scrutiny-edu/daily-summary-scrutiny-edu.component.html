@@ -1,0 +1,202 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <div class="row justify-content-center pt-4">
+        <!-- <u><b>Search Application</b></u> -->
+      </div>
+      <!-- <div class="row">
+
+      </div> -->
+      <!-- <form [formGroup]='searchForm' class="pt-4">
+        <div class="row">
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>District</label>
+              <select class="form-control" formControlName="districtId" name="districtId"
+                [attr.disabled]='disableDistrict ? true : null'>
+                <option value="" selected disabled hidden>Select value</option>
+                <option *ngFor="let x of districtList" [value]='x.id'>{{x.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" class="form-control" formControlName="dateOfPet" name="dateOfPet"
+                       [min]="minDate" [max]="maxDate">
+            </div>
+          </div>
+
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Application Id</label>
+              <input name="fatherName" type="text" class="form-control" formControlName="applicationId"
+                placeholder="Application Id">
+            </div>
+          </div>
+
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Roll No.</label>
+              <input name="fatherName" type="text" class="form-control" formControlName="rollNumber"
+                placeholder="Roll no.">
+            </div>
+          </div>
+
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Phone No.</label>
+              <input name="fatherName" type="text" class="form-control" formControlName="msisdn"
+                placeholder="Phone no.">
+            </div>
+          </div>
+
+        </div>
+      </form>
+      <div class="row jultify-right">
+        <div class="col-md-4  jultify-right">
+          <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold right-align"
+            (click)='searchApplication()'>Search</button>
+        </div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-md-12 text-center">
+          <b>OR</b>
+        </div>
+      </div>
+      <form [formGroup]='downloadPdfForm' class="pt-4">
+        <div class="row">
+
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Roll No From.</label>
+              <input name="fatherName" type="text" class="form-control" formControlName="rollNoFrom"
+                placeholder="Roll no. from">
+              <div *ngIf="downloadPdfForm.controls.rollNoFrom.errors &&
+                        submitApplicationForm==true">
+                <span *ngIf="downloadPdfForm.controls.rollNoFrom.errors.required" class="error">
+                  Please enter roll no. from</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Roll No To</label>
+              <input name="fatherName" type="text" class="form-control" formControlName="rollNoTo"
+                placeholder="Phone no.">
+              <div *ngIf="downloadPdfForm.controls.rollNoTo.errors &&
+                        submitApplicationForm==true">
+                <span *ngIf="downloadPdfForm.controls.rollNoTo.errors.required" class="error">
+                  Please enter roll no. to</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row jultify-right">
+        <div class="col-md-4  jultify-right">
+          <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold right-align"
+            (click)='downloadAttendence()'>Download Attendance Sheet</button>
+        </div>
+      </div> -->
+      <!-- <div class="pt-4 mr-5 ml-5"> -->
+      <!-- <div class="row"> -->
+      <div class="row pt-4" *ngIf="summaryList">
+        <div class="col-md-12 text-right">
+          <b>Total Count:</b> {{summaryList.length}}
+        </div>
+      </div>
+      <div class="horizontal-scrolling">
+        <table class="table table-bordered w-nospace table-hover">
+          <thead>
+            <tr>
+              <th class="bg-col-body cardText">Evaluation Date</th>
+              <th class="bg-col-body cardText">Roll No</th>
+              <th class="bg-col-body cardText">Application Id</th> 
+              <th class="bg-col-body cardText">District</th>
+              <th class="bg-col-body cardText">Name</th>
+              <th class="bg-col-body cardText">Father Name</th>
+              <th class="bg-col-body cardText">Gender</th>
+              <th class="bg-col-body cardText">Category</th>
+              <th class="bg-col-body cardText">Sub-Category</th>  
+
+              <th class="bg-col-body cardText">Maximum Marks</th>  
+              <th class="bg-col-body cardText">Marks Scored</th>  
+              <th class="bg-col-body cardText">Percentage</th>  
+              <th class="bg-col-body cardText">Calculated Marks</th>  
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr data-toggle="collapse" *ngFor="let x of summaryList">
+              <td>{{x.eduEvaluationOn}}</td>
+              <td>{{x.rollNo}}</td>
+              <td>{{x.applicationNumber}}</td>
+               <td>{{x.districtName}}</td>
+              <td>{{x.candidateName}}</td>
+              <td>{{x.fatherName}}</td>
+              <td>{{x.gender}}</td>
+              <td>{{x.category}}</td>
+              <td>{{x.subCategory}}</td>  
+              <td>{{x.eduMaxMarks}}</td>  
+              <td>{{x.eduMarksScore}}</td>  
+              <td>{{x.eduMarksInPercentage}}</td>  
+              <td>{{x.eduEvaluationMarks}}</td>  
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <!-- <ngb-pagination [collectionSize]="summaryList.length" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="7"
+        [rotate]="true" (pageChange)="onPageChange(page)" *ngIf="summaryList && summaryList.length>0">
+      </ngb-pagination> -->
+    </div>
+  </div>
+</main>
+
+<ng-template #attendanceRemarks let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm!!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]='confirmationForm'>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Remarks</label>
+          <input type="text" class="form-control" formControlName="remarks" placeholder="Remarks">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-danger uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Close</button>
+    <button class="btn btn-success uppercase mr-1" data-dismiss="modal" (click)="modal.close('Remarks Ok')"
+      [disabled]='enableResedOTP'>Ok</button>
+  </div>
+</ng-template>
+
+<ng-template #secondConsentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      Do you really want to send the SMS?.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('Send SMS')">Submit</button>
+  </div>
+</ng-template><p>
+  daily-summary-scrutiny-edu works!
+</p>

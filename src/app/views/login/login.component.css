@@ -1,0 +1,49 @@
+.field-sec a {
+  font-size: 12px;
+}
+
+.show-pwd {
+  position: absolute;
+  left: 85%;
+  background-color: transparent;
+  color: #6c757d;
+  border-radius: 50%;
+  padding-top: 9px;
+  top: 49%;
+}
+
+.logo-home {
+  max-width: 113px !important;
+  padding: 11px !important;
+  margin-right: 20px !important;
+  margin-left: 2% !important;
+}
+
+/* h2 {
+  font-size: 22px !important;
+} */
+
+.modal90 {
+  width: 90% !important;
+}
+
+.border-top-left-radius {
+  border-top-left-radius: 20px !important;
+}
+
+.border-top-right-radius {
+  border-top-right-radius: 20px !important;
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.info {
+  text-align: justify
+}

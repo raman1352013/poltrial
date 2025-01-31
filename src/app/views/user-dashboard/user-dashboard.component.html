@@ -1,0 +1,183 @@
+<div class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header [headerTitle]="header" [save]='save' [payment]='payment'
+        [displayDeaderButton]='displayDeaderButton'></app-main-header>
+      <div class="row pt-3">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="login-header border-top-left-radius border-top-right-radius ">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative">Applicant Details
+              </h2>
+            </div>
+            <div class="card-body">
+              <form [formGroup]='applicationForm'>
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Applicant Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label for="applicationNo">Application ID</label>
+                      <input name="applicationNo" id="applicationNo" type="text" class="form-control"
+                        placeholder="Applicant Id" formControlName="applicationNo">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">Full Name</label>
+                      <input name="name" id="name" type="text" class="form-control" formControlName="name"
+                        placeholder="Full Name">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="msisdn">Mobile No.</label>
+                      <input name="msisdn" id="msisdn" type="text" class="form-control" formControlName="msisdn"
+                        placeholder="Mobile No.">
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="msisdn">Father's Name</label>
+                      <input name="msisdn" id="msisdn" type="text" class="form-control" formControlName="msisdn"
+                        placeholder="Father's Name">
+                    </div>
+                  </div> -->
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Email Id</label>
+                      <input name="email" id="email" type="text" class="form-control" formControlName="email"
+                        placeholder="Email Id">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="district">District</label>
+                      <input name="district" id="district" type="district" class="form-control"
+                        formControlName="district" placeholder="District">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="category">Category</label>
+                      <input name="category" id="category" type="text" class="form-control" formControlName="category"
+                        placeholder="Category">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="subCategory">Sub Category</label>
+                      <input name="subCategory" id="subCategory" type="text" class="form-control"
+                        formControlName="subCategory" placeholder="Sub Category">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="postAppliedFor">Post Applied For</label>
+                      <input name="postAppliedFor" id="postAppliedFor" type="text" class="form-control"
+                        formControlName="postAppliedFor" placeholder="Post Applied For">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Payment Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label for="applicationFee">Application Fee</label>
+                      <input name="applicationFee" id="applicationFee" type="text" class="form-control"
+                        placeholder="Application Fee" formControlName="applicationFee">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="covidFee">COVID-19 Protocol Implementation Fee</label>
+                      <input name="covidFee" id="covidFee" type="text" class="form-control" formControlName="covidFee"
+                        placeholder="COWID-19 Protocol Implementation Fee">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="totalFee">Total Fee PAYMENT CONFIRMATION
+                        paid</label>
+                      <input name="totalFee" id="totalFee" type="text" class="form-control" formControlName="totalFee"
+                        placeholder="Total Fee to be paid">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="totalFee">Reference Id</label>
+                      <input name="totalFee" id="totalFee" type="text" class="form-control"
+                        formControlName="referenceNo" placeholder="Total Fee to be paid">
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-12">
+                    <div class="form-group">
+                      <label><span class="text-danger ft-weight-semi">Note*: Fee once paid will not be
+                          refunded and you can not make any change in the application form after payment.</span></label>
+
+                    </div>
+                  </div> -->
+                </div>
+
+
+              </form>
+
+            </div>
+            <!-- <div class="card-footer">
+              <div class="field-sec text-right"> 
+                <button class="bg-red btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)='goToUrl()'>Pay
+                  Now</button>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<ng-template #successPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class="modal-header login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Payment Confirmation !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        Payment Successfull !!
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-right">
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('Go To Home')">Go to Dashboard</button>
+  </div>
+</ng-template>

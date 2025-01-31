@@ -1,0 +1,22 @@
+<ng-template #successPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class="modal-header login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Payment Confirmation !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Payment Successful</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 subHeading">
+        The payment for your application has been done successfully. You will be notified by SMS in due course.
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-right">
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('Go To Home')">Go to Dashboard</button>
+  </div>
+</ng-template>

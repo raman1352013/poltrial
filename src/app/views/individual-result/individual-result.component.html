@@ -1,0 +1,672 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <!-- <div class="row justify-content-center pt-4">
+        <u><b></b></u>
+      </div> -->
+
+      <div class="row pt-3">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="other-header border-top-left-radius border-top-right-radius ">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative">Individual Result(PST/PET)
+              </h2>
+            </div>
+            <div class="card-body">
+              <zxing-scanner (scanSuccess)="onCodeResult($event)" *ngIf="enableScanner"></zxing-scanner>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="scanQr()">Scan
+                    Admit Card</button>
+                </div>
+
+                <div class="col-md-12 text-center pt-3 pb-3">
+                  <h2>OR</h2>
+                </div>
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-4">
+                  <form [formGroup]='searchForm'>
+                    <div class="form-group">
+                      <!-- <label></label> -->
+                      <input name="applicationNumber" type="text" class="form-control"
+                        formControlName="applicationNumber" placeholder="Application Id">
+                    </div>
+                  </form>
+                </div>
+
+                <div class="col-md-4">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                    (click)="getApplicationDetails()">Verify</button>
+                </div>
+              </div>
+              <form [formGroup]='manageAdmitCardsForm' *ngIf="enableForm">
+                <!-- <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Total Candidates</label>
+                    <hr>
+                  </div>
+                </div> -->
+
+                <div class="row pt-4">
+                  <div class="col-md-12">
+                    <label class="header-font">Candidate Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row pt-4">
+                  <div class="col-md-6">
+                    <label>Photo</label><br>
+                    <div class="photo-sig">
+
+                      <img class="photo-sig-img" [src]='photo' alt="logo">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Signature</label><br>
+                    <div class="photo-sig">
+                      <img class="photo-sig-img" [src]='signature' alt="logo">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Application ID</label>
+                      <input name="applicationNo" type="text" class="form-control" formControlName="applicationNo"
+                        readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Bonafide District</label>
+                      <input name="district" type="text" class="form-control" formControlName="district" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Full name</label>
+                      <input name="name" type="text" class="form-control" formControlName="name" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gorkha</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="isGorkha" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Father's Name</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="fatherName" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Date of Birth</label>
+                      <input name="dob" type="text" class="form-control" formControlName="dob" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gender</label>
+                      <input name="gender" type="text" class="form-control" formControlName="gender" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <input name="category" type="text" class="form-control" formControlName="category" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Sub Category</label>
+                      <input name="subCategory" type="text" class="form-control" formControlName="subCategory" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Post Applied For</label>
+                      <input name="postAppliedFor" type="text" class="form-control" formControlName="postAppliedFor"
+                        readonly>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Registered Mobile No.</label>
+                      <input name="mobileNo" type="text" class="form-control" formControlName="mobileNo" readonly>
+                    </div>
+                  </div> -->
+                </div>
+              </form>
+              <div *ngIf="enableForm">
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">PST Result</label>
+                    <hr>
+                  </div>
+                </div>
+                <form [formGroup]='heightForm'>
+                  <div class="row">
+                    <div class="col-md-12">
+                      Height
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Date</label>
+                        <input name="heightExamDate" type="text" class="form-control" formControlName="heightExamDate"
+                          readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Feet<span class="text-danger ft-weight-semi">*</span></label>
+                        <select class="form-control" formControlName="feet" name="feet" (change)='getFeet()'>
+                          <option value="" selected disabled hidden>Select</option>
+                          <option *ngFor="let x of feetArray" [value]='x.feet'>{{x.feet}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Inches</label>
+                        <select class="form-control" formControlName="inches" name="inches" (change)='getInches()'>
+                          <option value="" selected disabled hidden>Select</option>
+                          <option *ngFor="let x of heightInchesArray" [value]='x.inches'>{{x.inches}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Result</label>
+                        <input name="result" type="text" class="form-control" formControlName="result"
+                          placeholder="Result" readonly>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Score</label>
+                        <input name="score" type="text" class="form-control" formControlName="score" placeholder="Score"
+                          readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngIf="!heightButton">
+                      <label>Remarks<span class="text-danger ft-weight-semi">*</span></label>
+                      <textarea rows="2" style="min-width: 100%" formControlName="remarks"></textarea>
+                      <div *ngIf="heightForm.controls.remarks.errors && heightFormSubmit==true">
+                        <span *ngIf="heightForm.controls.remarks.errors.required" class="error">
+                          Please enter remarks</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row text-right">
+                    <div class="col-md-12">
+                      <button *ngIf="heightButton" class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editHeight()">Edit</button>
+
+                      <button *ngIf="!heightButton" class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateHeightConfirmation()">Submit</button>
+                    </div>
+                  </div> -->
+                </form>
+                <hr>
+                <form [formGroup]='chestForm'>
+                  <div class="row">
+                    <div class="col-md-12">
+                      Chest
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Date</label>
+                        <input name="chestExamDate" type="text" class="form-control" formControlName="chestExamDate"
+                          readonly>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Inches A<span class="text-danger ft-weight-semi">*</span></label>
+                        <select class="form-control" formControlName="chestA" name="chestA" (change)='getInchesA()'
+                          [attr.disabled]="disableCalculation == true ? true : null">
+                          <option value="" selected disabled hidden>Select</option>
+                          <option *ngFor="let x of inchesArray" [value]='x.inches'>{{x.inches}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Inches B</label>
+                        <select class="form-control" formControlName="chestB" name="chestB" (change)='getInchesB()'
+                          [attr.disabled]="disableCalculation == true ? true : null">
+                          <option value="" selected disabled hidden>Select</option>
+                          <option *ngFor="let x of inchesArray" [value]='x.inches'>{{x.inches}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Result</label>
+                        <input name="result" type="text" class="form-control" formControlName="result"
+                          placeholder="Result" readonly>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-12" *ngIf="!chestButton">
+                      <textarea rows="2" style="min-width: 100%"></textarea>
+                    </div> -->
+
+                    <div class="col-md-12" *ngIf="!chestButton">
+                      <label>Remarks<span class="text-danger ft-weight-semi">*</span></label>
+                      <textarea rows="2" style="min-width: 100%" formControlName="remarks"></textarea>
+                      <div *ngIf="chestForm.controls.remarks.errors && chestFormSubmit==true">
+                        <span *ngIf="chestForm.controls.remarks.errors.required" class="error">
+                          Please enter remarks</span>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-12 text-right pt-4">
+                      <button *ngIf="chestButton" class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editChest()">Edit</button>
+
+                      <button *ngIf="!chestButton" class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateChestConfirmation()">Submit</button>
+                    </div> -->
+                  </div>
+                  <!-- <div class="row text-right">
+                    <div class="col-md-12">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateChestconfirmation()">Edit</button>
+                    </div>
+                  </div> -->
+                  <!-- <div class="row text-right">
+                    <div class="col-md-12">
+                      <button *ngIf="chestButton == 'Edit'"
+                        class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editChest()">Edit</button>
+
+                      <button *ngIf="chestButton !== 'Edit'"
+                        class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateChestConfirmation()">Submit</button>
+                    </div>
+                  </div> -->
+                </form>
+                <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">PET Result</label>
+                    <hr>
+                  </div>
+                </div>
+                <form [formGroup]='raceForm'>
+                  <div class="row">
+                    <div class="col-md-2 tet-right">
+                      Race
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <!-- <div class="col-md-6">
+                          <label>Date</label>
+                        </div> -->
+                        <div class="col-md-3">
+                          <label>Date</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input name="raceExamDate" type="text" class="form-control" formControlName="raceExamDate"
+                            readonly>
+                        </div>
+                      </div>
+                      <!-- <div class="form-group">
+                        
+                        
+                      </div> -->
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Result </label>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                          <input type="radio" class="custom-control-input" id="defaultInline513" name="status" mdbInput
+                            formControlName="status" value="P">
+                          <label class="custom-control-label" for="defaultInline513">Qualified</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline1222" name="status"
+                            formControlName="status" mdbInput value="F">
+                          <label class="custom-control-label" for="defaultInline1222">Not Qualified</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngIf="!raceButtonEdit">
+                      <label>Remarks<span class="text-danger ft-weight-semi">*</span></label>
+                      <textarea rows="2" style="min-width: 100%" formControlName="remarks"></textarea>
+                      <div *ngIf="raceForm.controls.remarks.errors && raceFormSubmit==true">
+                        <span *ngIf="raceForm.controls.remarks.errors.required" class="error">
+                          Please enter remarks</span>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-12 text-right">
+                      <button *ngIf="raceButtonEdit"
+                        class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editRace()">Edit</button>
+
+                      <button *ngIf="!raceButtonEdit"
+                        class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateRaceConfirmation()">Submit</button>
+                    </div> -->
+                  </div>
+                  <!-- <div class="row text-right">
+                    <div class="col-md-12">
+                      <button *ngIf="raceButtonEdit"
+                        class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editRace()">Edit</button>
+
+                      <button *ngIf="!raceButtonEdit"
+                        class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateRaceConfirmation()">Submit</button>
+                    </div>
+                  </div> -->
+                </form>
+                <hr>
+                <form [formGroup]='heighJumpForm'>
+                  <div class="row">
+                    <div class="col-md-12">
+                      High Jump
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label>Date:</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input name="highJumpDate" type="text" class="form-control" formControlName="highJumpDate"
+                            readonly>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label>Attempt 1</label>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                          <input type="radio" class="custom-control-input" id="defaultInline521213"
+                            name="highJumpStatusOne" mdbInput formControlName="highJumpStatusOne" value="P">
+                          <label class="custom-control-label" for="defaultInline521213">Qualified</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline12e2322221"
+                            name="highJumpStatusOne" formControlName="highJumpStatusOne" mdbInput value="F">
+                          <label class="custom-control-label" for="defaultInline12e2322221">Not Qualified</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-2 text-right">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="confirmation()">Edit</button>
+                    </div> -->
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label>Attempt 2 </label>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                          <input type="radio" class="custom-control-input" id="defaultInline52132213"
+                            name="highJumpStatusTwo" mdbInput formControlName="highJumpStatusTwo" value="P">
+                          <label class="custom-control-label" for="defaultInline52132213">Qualified</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline21222221"
+                            name="highJumpStatusTwo" formControlName="highJumpStatusTwo" mdbInput value="F">
+                          <label class="custom-control-label" for="defaultInline21222221">Not Qualified</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-2 text-right">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="confirmation()">Edit</button>
+                    </div> -->
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label>Attempt 3</label>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                          <input type="radio" class="custom-control-input" id="defaultInline52122213"
+                            name="highJumpStatusThree" mdbInput formControlName="highJumpStatusThree" value="P">
+                          <label class="custom-control-label" for="defaultInline52122213">Qualified</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline1222221"
+                            name="highJumpStatusThree" formControlName="highJumpStatusThree" mdbInput value="F">
+                          <label class="custom-control-label" for="defaultInline1222221">Not Qualified</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngIf="!heighJumpButtonEdit">
+                      <label>Remarks<span class="text-danger ft-weight-semi">*</span></label>
+                      <textarea rows="2" style="min-width: 100%" formControlName="remarks"></textarea>
+                      <div *ngIf="heighJumpForm.controls.remarks.errors && heighJumpFormSubmit ==true">
+                        <span *ngIf="heighJumpForm.controls.remarks.errors.required" class="error">
+                          Please enter remarks</span>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-2 text-right">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="confirmation()">Edit</button>
+                    </div> -->
+                  </div>
+                  <!-- <div class="row text-right">
+                    <div class="col-md-12">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editHighJump()" *ngIf="heighJumpButtonEdit">Edit</button>
+
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateHighJumpConfirmation()" *ngIf="!heighJumpButtonEdit">Submit</button>
+                    </div>
+                  </div> -->
+                </form>
+                <hr>
+                <form [formGroup]='broadJumpForm'>
+                  <div class="row">
+                    <div class="col-md-12">
+                      Broad Jump
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label>Date:</label>
+                        </div>
+                        <div class="col-md-9">
+                          <input name="broadJumpDate" type="text" class="form-control" formControlName="broadJumpDate"
+                            readonly>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Date</label>
+                        <input name="broadJumpDate" type="text" class="form-control" formControlName="broadJumpDate"
+                          readonly>
+                      </div>
+                    </div> -->
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label>Attempt 1</label>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                          <input type="radio" class="custom-control-input" id="defaultInline52122313"
+                            name="broadJumpStatusOne" mdbInput formControlName="broadJumpStatusOne" value="P">
+                          <label class="custom-control-label" for="defaultInline52122313">Qualified</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="default32Inline1222221"
+                            name="broadJumpStatusOne" formControlName="broadJumpStatusOne" mdbInput value="F">
+                          <label class="custom-control-label" for="default32Inline1222221">Not Qualified</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-2 text-right">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="confirmation()">Edit</button>
+                    </div> -->
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <!-- <div class="col-md-2"></div> -->
+                        <label>Attempt 2 </label>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                          <input type="radio" class="custom-control-input" id="defaultInline522321213"
+                            name="broadJumpStatusTwo" mdbInput formControlName="broadJumpStatusTwo" value="P">
+                          <label class="custom-control-label" for="defaultInline522321213">Qualified</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline1232222221"
+                            name="broadJumpStatusTwo" formControlName="broadJumpStatusTwo" mdbInput value="F">
+                          <label class="custom-control-label" for="defaultInline1232222221">Not Qualified</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-2 text-right">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="confirmation()">Edit</button>
+                    </div> -->
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <div class="col-md-2"></div>
+                        <label>Attempt 3</label>
+                        <div class="custom-control custom-radio custom-control-inline ml-2">
+                          <input type="radio" class="custom-control-input" id="defaultInline5232421213"
+                            name="broadJumpStatusThree" mdbInput formControlName="broadJumpStatusThree" value="P">
+                          <label class="custom-control-label" for="defaultInline5232421213">Qualified</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline21263622221"
+                            name="broadJumpStatusThree" formControlName="broadJumpStatusThree" mdbInput value="F">
+                          <label class="custom-control-label" for="defaultInline21263622221">Not Qualified</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngIf="!broadJumpButtonEdit">
+                      <label>Remarks<span class="text-danger ft-weight-semi">*</span></label>
+                      <textarea rows="2" style="min-width: 100%" formControlName="remarks"></textarea>
+                      <div *ngIf="broadJumpForm.controls.remarks.errors && broadJumpFormSubmit ==true">
+                        <span *ngIf="broadJumpForm.controls.remarks.errors.required" class="error">
+                          Please enter remarks</span>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-2 text-right">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="confirmation()">Edit</button>
+                    </div> -->
+                  </div>
+                  <!-- <div class="row text-right">
+                    <div class="col-md-12">
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editBroadJump()" *ngIf="broadJumpButtonEdit">Edit</button>
+
+                      <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateBroadJumpConfirmation()" *ngIf="!broadJumpButtonEdit">Submit</button>
+                    </div>
+                  </div> -->
+                </form>
+
+                <form [formGroup]='driverForm' *ngIf="response?.postAppliedFor == 'D'">
+                  <div class="row">
+                    <div class="col-md-2">
+                      Driver
+                    </div>
+                    <div class="col-md-3">
+                      <label>Marks</label>
+                      <select class="form-control" formControlName="marks" name="marks" (change)='getMark()'>
+                        <option value="" selected disabled hidden>Select value</option>
+                        <option *ngFor="let x of drivingMarksArray" [value]='x.mark'>{{x.mark}}</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Status</label>
+                        <div class="postAvailability" [ngClass]="{'text-green': driverStatus === 'Qualified', 'deep-red' : driverStatus === 'Not Qualified'
+                         }">{{driverStatus}}
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Result</label>
+                        <input name="result" type="text" class="form-control" formControlName="result"
+                          placeholder="Result" readonly>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label>Score</label>
+                        <input name="score" type="text" class="form-control" formControlName="score" placeholder="Score"
+                          readonly>
+                      </div>
+                    </div> -->
+                    <!-- <div class="col-md-12" *ngIf="!driverEdit">
+                      <label>Remarks<span class="text-danger ft-weight-semi">*</span></label>
+                      <textarea rows="2" style="min-width: 100%" formControlName="remarks"></textarea>
+                      <div *ngIf="driverForm.controls.remarks.errors && driverFormSubmit==true">
+                        <span *ngIf="driverForm.controls.remarks.errors.required" class="error">
+                          Please enter remarks</span>
+                      </div>
+                    </div> -->
+                  </div>
+                  <!-- <div class="row text-right">
+                    <div class="col-md-12">
+                      <button *ngIf="driverEdit" class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="editDriver()">Edit</button>
+
+                      <button *ngIf="!driverEdit" class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                        (click)="updateDriverConfirmation()">Submit</button>
+                    </div>
+                  </div> -->
+                </form>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      Do you really want to submit the form? Information once submitted cannot be changed.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('second consent')">Submit</button>
+  </div>
+</ng-template>

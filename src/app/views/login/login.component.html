@@ -1,0 +1,328 @@
+<div class="main-content">
+	<div class="row page-header">
+		<!-- <div class="col-md-2"> -->
+		<!-- <div class="log-sec"> -->
+		<img src="assets/Himachal_Pradesh_Police_Logo.png" alt="logo" class="logo-home">
+		<!-- </div> -->
+		<!-- </div> -->
+		<!-- <div class="col-md-10 pt-4"> -->
+		<!-- <h3>Himachal Pradesh Police</h3> -->
+		<!-- </div> -->
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 form-group pt-2">
+			<div class="field-area" id="loginLabel">
+				<!-- <div class="row justify-content-center">
+					<div class="col-md-8 info">
+						<h3 class="pt-4">Applications are invited in the online format for recruitment to the posts of
+							constables
+							in
+							Himachal Pradesh Police Department</h3>
+						<h5 class="pt-4">Last date to apply is 31st October 2021 till 0800 hours</h5>
+						<label class="pt-4" for="exampleCheck1">For detailed
+							recruitment
+							notification<a
+								href="assets/Notification_for_Recruitment_of_Constables_English_and_Hindi.pdf"
+								download="Notification for Recruitment of Constables"
+								routerLinkActive="router-link-active"> Click here
+							</a></label>
+						<label class="pt-4" for="exampleCheckr">
+							To download guidelines and instructions
+							for filling the online application
+							<a href="assets/Hp_Police_Final_Instructions_and_Guidelines.pdf" download="Guidelines">
+								Click
+								here</a></label>
+
+						<label class="pt-4">
+							<span class="text-danger ft-weight-semi">
+								<a>
+									Candidates are advised to provide their own mobile number or the mobile number which
+									is
+									easily accessible to
+									them. The mobile number provided by you will be used for sending SMS alerts
+									regarding
+									recruitment process from
+									time to time.
+								</a>
+							</span>
+						</label>
+						<label class="pt-4">
+							<span class="text-danger ft-weight-semi">
+								<a>
+									In case, you don't receive the Password through SMS, please use forgot password
+									option.
+								</a>
+							</span>
+
+						</label>
+						<label class="pt-4"><a>
+								For any query send an email to police-helpdesk@hp.gov.in
+							</a></label>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<div class="col-md-4 form-group pt-5">
+			<form [formGroup]="loginForm">
+				<div class="row">
+					<div class="col-md-12 col-lg-12 bg-white unset-pading border-top-left-radius border-top-right-radius
+                        login-form-radius">
+						<div class="login-header border-top-left-radius border-top-right-radius ">
+							<h2 class="text-center uppercase ft-weight-bold  position-relative">
+								Login</h2>
+						</div>
+						<div class="field-area" id="loginLabel">
+							<div class="field-sec">
+								<label class="text-blue">
+									<em class="fas fa-user"></em>User Id</label>
+								<input type="text" formControlName="userName" class="form-control" placeholder="User Id"
+									numbersOnly>
+								<div *ngIf="loginForm.controls.userName.errors && formSubmitted==true">
+									<span *ngIf="loginForm.controls.userName.errors.required" class="error">
+										Please enter user id</span>
+									<span *ngIf="loginForm.controls.userName.errors.minlength" class="error">
+										Please enter correct user id</span>
+								</div>
+							</div>
+							<div class="field-sec">
+								<label class="text-blue">
+									<em class="fas fa-lock"></em>Password</label>
+								<input [type]="show? 'text': 'password'" formControlName="password" name="password"
+									class="form-control" placeholder="Password">
+								<em *ngIf="loginForm.controls.password.value"
+									[ngClass]="statusShow ? 'fa fa-eye show-pwd' : 'fa fa-eye-slash show-pwd'"
+									(click)="showPwd()"></em>
+							</div>
+							<div *ngIf="loginForm.controls.password.errors && formSubmitted==true">
+								<span *ngIf="loginForm.controls.password.errors.required" class="error">
+									Please enter password</span>
+								<span *ngIf="loginForm.controls.password.errors.minlength" class="error">
+									Please enter correct password</span>
+								<span *ngIf="loginForm.controls.password.errors.maxlength" class="error">
+									Please enter correct password</span>
+							</div>
+							<div class="field-sec">
+								<re-captcha (resolved)="resolved($event)"
+									siteKey="6Leb5p4cAAAAAJbzpba10yhlvAf1AWx0f--el-9l"></re-captcha>
+							</div>
+
+							<div class="field-sec text-center">
+								<!-- <button class="btn btn-primary uppercase  w-50 ft-weight-bold"
+									(click)="goToLogin()">Submit</button> -->
+								<button class="btn btn-primary uppercase  w-50 ft-weight-bold" (click)="goToLogin()"
+									[disabled]="disableLoginButton">Submit</button>
+							</div>
+							<div class="row mt-3">
+								<!-- <div class="col text-left">
+									<label class="form-check-label undertakingLabel margin-top2" for="exampleCheck1">
+										<a routerLink="/Registration" routerLinkActive="router-link-active">New
+											User</a></label>
+								</div> -->
+								<!-- <div class="col text-right">
+									<label class="form-check-label forgotPasswordLbl margin-top2"><a routerLink="#"
+											routerLinkActive="router-link-active"
+											(click)='open(forgotPasswordPopUp)'>Forgot
+											Password</a></label>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- <div class="modal fade" id="forgotPasswordPopUp" data-keyboard="false" data-backdrop="static" [hidden]="hideModal">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm">
+			<div class="modal-content border-top-left-radius border-top-right-radius">
+				<div class="modal-header login-header border-top-left-radius border-top-right-radius">
+					<h2 class="text-center uppercase ft-weight-bold  position-relative">Forgot Password?</h2>
+				</div>
+				<div class="modal-body">
+					<form [formGroup]="mobileForm">
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label>Mobile No.</label>
+								<div class="input-group">
+									<input type="changePasswordForm" class="form-control" formControlName="msisdn">
+									<div *ngIf="mobileForm.controls.msisdn.errors && formSubmitted==true">
+										<span *ngIf="mobileForm.controls.msisdn.errors.required" class="error">
+											Please enter mobile no.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary uppercase mr-1" data-dismiss="modal" #closeForgotPasswordPopUp>
+						Cancel</button>
+					<button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold"
+						[disabled]="!mobileForm.valid" (click)='sendOtp()' data-dismiss="modal" (click)='sendOtp()'
+						data-toggle="modal" data-target="#forgotPasswordDetails">Send OTP</button>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+	<div class="modal fade" id="forgotPasswordDetails" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm">
+			<div class="modal-content border-top-left-radius border-top-right-radius">
+				<div class="modal-header login-header border-top-left-radius border-top-right-radius">
+					<h2 class="text-center uppercase ft-weight-bold  position-relative">Generate password</h2>
+				</div>
+				<div class="modal-body">
+					<form [formGroup]="changePasswordForm">
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label>OTP</label>
+								<div class="input-group">
+									<input type="changePasswordForm" class="form-control" formControlName="oldPassword">
+									<div *ngIf="changePasswordForm.controls.oldPassword.errors && formSubmitted==true">
+										<span *ngIf="changePasswordForm.controls.oldPassword.errors.required"
+											class="error">
+											Please enter user name</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 form-group">
+
+								<label>New Password</label>
+								<div class="input-group">
+									<input type="password" class="form-control" formControlName="newPassword">
+									<div *ngIf="changePasswordForm.controls.oldPassword.errors && formSubmitted==true">
+										<span *ngIf="changePasswordForm.controls.oldPassword.errors.required"
+											class="error">
+											Please enter new password</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6 form-group">
+								<label>Confirm Password</label>
+								<div class="input-group">
+									<input type="text" class="form-control" formControlName="conPassword"
+										(keyup)="onConPassword($event)">
+									<div *ngIf="changePasswordForm.controls.conPassword.errors && formSubmitted==true">
+										<span *ngIf="changePasswordForm.controls.conPassword.errors.required"
+											class="error">
+											Please enter confirm password</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+						#closeForgotPasswordDetails>Cancel</button>
+					<button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold"
+						[disabled]="otpFormisvalid" (click)='redirectToLogin()'>Login Now</button>
+				</div>
+			</div>
+		</div>
+	</div>  -->
+	<ng-template #forgotPasswordPopUp let-modal>
+		<div class="modal-header login-header  border-top-left-radius border-top-right-radius">
+			<h2 class="text-center uppercase ft-weight-bold  position-relative">Forgot Password?
+			</h2>
+		</div>
+		<div class="modal-body">
+			<form [formGroup]="mobileForm">
+				<div class="row">
+					<div class="col-md-12 form-group">
+						<label>Registered Mobile No.<span class="text-danger ft-weight-semi">*</span></label>
+						<div class="input-group">
+							<input type="changePasswordForm" class="form-control" formControlName="msisdn">
+							<div *ngIf="mobileForm.controls.msisdn.errors && mobileFormSubmitted==true">
+								<span *ngIf="mobileForm.controls.msisdn.errors.required" class="error">
+									Please enter mobile no.</span>
+								<span *ngIf="mobileForm.controls.msisdn.errors.pattern" class="error">
+									Please enter correct mobile no.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-secondary uppercase mr-1" (click)="modal.close('Close click')">
+				Cancel</button>
+			<button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" [disabled]="!mobileForm.valid"
+				(click)="modal.close('Save click')">Send OTP</button>
+			<!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button> -->
+		</div>
+	</ng-template>
+
+
+	<ng-template #forgotPasswordDetails let-modal>
+		<div class="modal-header login-header  border-top-left-radius border-top-right-radius">
+			<h2 class="text-center uppercase ft-weight-bold  position-relative">Reset Password!!
+			</h2>
+		</div>
+		<div class="modal-body">
+			<form [formGroup]="changePasswordForm">
+				<div class="row">
+					<div class="col-md-12 form-group">
+						<label>OTP<span class="text-danger ft-weight-semi">*</span></label>
+						<div class="input-group">
+							<input type="password" class="form-control" formControlName="otp">
+							<div
+								*ngIf="changePasswordForm.controls.otp.errors && forgotPasswordDetailsformSubmitted==true">
+								<span *ngIf="changePasswordForm.controls.otp.errors.required" class="error">
+									Please enter otp</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 form-group">
+
+						<label>New Password<span class="text-danger ft-weight-semi">*</span></label>
+						<div class="input-group">
+							<input type="password" class="form-control" formControlName="newPassword"
+								(keyup)='getPassword("n")'>
+							<div
+								*ngIf="changePasswordForm.controls.newPassword.errors && forgotPasswordDetailsformSubmitted==true">
+								<span *ngIf="changePasswordForm.controls.newPassword.errors.required" class="error">
+									Please enter new password</span>
+								<span *ngIf="changePasswordForm.controls.newPassword.errors.minlength" class="error">
+									Please enter correct password</span>
+								<span *ngIf="changePasswordForm.controls.newPassword.errors.maxlength" class="error">
+									Please enter correct password</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6 form-group">
+						<label>Confirm Password<span class="text-danger ft-weight-semi">*</span></label>
+						<div class="input-group">
+							<input type="text" class="form-control" formControlName="conPassword"
+								(keyup)='getPassword("c")'>
+							<div
+								*ngIf="changePasswordForm.controls.conPassword.errors && forgotPasswordDetailsformSubmitted==true">
+								<span *ngIf="changePasswordForm.controls.conPassword.errors.required" class="error">
+									Please enter confirm password</span>
+								<span *ngIf="changePasswordForm.controls.newPassword.errors.minlength" class="error">
+									Please enter correct password</span>
+								<span *ngIf="changePasswordForm.controls.newPassword.errors.maxlength" class="error">
+									Please enter correct password</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 form-group">
+						<label>Note: <span class="text-danger ft-weight-semi">Password and Confirm Password should be
+								same </span></label>
+
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-secondary uppercase mr-1" (click)="modal.close('Cancel click')">Cancel</button>
+			<button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" [disabled]="!enableSubmit"
+				(click)="modal.close('Submit click')">Submit</button>
+
+			<!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button> -->
+		</div>
+	</ng-template>
+
+</div>

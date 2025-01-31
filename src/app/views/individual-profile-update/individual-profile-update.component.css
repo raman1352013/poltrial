@@ -1,0 +1,378 @@
+.header-font {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.logo {
+    max-width: 111px;
+    padding: 5px 20px;
+    margin-right: 20px;
+}
+
+/* h2 {
+    font-size: 22px !important;
+} */
+
+.ft-weight-semi {
+    font-size: 12px;
+    color: var(--red-col);
+}
+
+.modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: unset;
+
+    padding: .75rem;
+    border-top: 1px solid #dee2e6;
+    border-bottom-right-radius: calc(.3rem - 1px);
+    border-bottom-left-radius: calc(.3rem - 1px);
+}
+
+.jultify-right {
+    justify-content: end !important;
+}
+
+.right-align {
+    float: right;
+}
+
+.modal-body {
+    max-height: calc(100vh - 243px);
+    overflow-y: auto;
+}
+
+.btn.disabled {
+    pointer-events: auto;
+}
+
+.modal {
+    pointer-events: none;
+}
+
+.modal-dialog {
+    pointer-events: all;
+}
+
+.modal-header {
+    height: 85px !important;
+    padding-top: 7px !important;
+
+}
+
+.font15 {
+    font-size: 15px;
+    color: black;
+}
+
+.red {
+    color: red;
+    font-size: 14;
+    font-weight: 600;
+}
+
+.gree {
+    color: green;
+    font-size: 14;
+    font-weight: 600;
+}
+
+.postAvailability {
+    height: 35px;
+    width: 200px;
+    border: 1px solid #d9e3e9;
+    text-align: left;
+    padding-top: 3px;
+    padding-left: 7px;
+}
+
+.btn-danger {
+    font-family: 'Montserrat', sans-serif;
+    /* height: 52px; */
+    border-radius: 35px !important;
+    /* border-color: var(--bg-red) !important; */
+    font-weight: 600;
+    /* background: var(--bg-red) !important; */
+    font-size: 14px;
+}
+
+.btn-danger:hover {
+    font-family: 'Montserrat', sans-serif;
+    /* height: 52px; */
+    border-radius: 35px !important;
+    /* border-color: var(--bg-red) !important; */
+    font-weight: 600;
+    /* background: var(--bg-red) !important; */
+}
+
+.hiddenRow {
+    padding: 0 !important;
+}
+
+.cardIcon {
+    color: white !important;
+}
+
+.cardText {
+    color: white;
+}
+
+.cardHeaderText {
+    color: rgb(8, 8, 8);
+}
+
+.headerText {
+    position: absolute !important;
+    bottom: 0 !important;
+}
+
+.pt-21 {
+    padding-top: 21%;
+}
+
+.nav-tabs .nav-link .dashboard {
+    border: none;
+
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: white;
+    background-color: #1d7641;
+    border-color: #dee2e6 #dee2e6 #fff;
+    border-radius: 50px;
+}
+
+
+.dashboard-line {
+    background: #ecece7;
+}
+
+.nav-item {
+    z-index: 0;
+    margin: 10px;
+    width: 130px;
+    text-align: center;
+}
+
+.nav-tabs .nav-link {
+    border-color: #e9ecef #e9ecef #dee2e6 !important;
+    /* border: 1px solid transparent; */
+    border-radius: 50px;
+    color: #1d7641;
+    background-color: #ffffff;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+    /* border-color: #e9ecef #e9ecef #dee2e6; */
+    color: #ffffff !important;
+    background-color: #1d7641 !important;
+}
+
+.dashboard-icons {
+    position: absolute;
+    right: 8px;
+    bottom: 12px;
+    font-size: 64px;
+}
+
+.pt-27 {
+    padding-top: 27px;
+}
+
+.panel-body.main-table>table>thead,
+.panel-body.sub-table table>thead {
+    background: #1d7641;
+    color: white;
+}
+
+.panel-body.main-table>table>thead {
+    background: #1d7641;
+    color: white;
+}
+
+.sub-table-border {
+    border: 3px solid #1d7641 !important;
+}
+
+.table-hover>tbody>tr.select-row:hover>td,
+.select-row>td {
+    background-color: #c0d8ca9e;
+}
+
+.sub-table-header {
+    background: #227845;
+    color: white;
+}
+
+.sub-table>thead.sub-table-header>tr:hover {
+    background: #227845;
+    color: white;
+}
+
+.district-name {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1d7641;
+}
+
+.w-12 {
+    width: 12%;
+}
+
+.bg-col-body {
+    background-color: #3c8dbc;
+}
+
+.bg-col-green {
+    background-color: #4ab30e;
+}
+
+.bg-col-yellow {
+    background-color: #f3df54;
+}
+
+.bg-col-red {
+    background-color: #f55444;
+}
+
+.bg-col-blue {
+    background-color: #17a2b8;
+}
+
+.bg-col-grey {
+    background-color: #c8c6c6;
+}
+
+.circle-card {
+    border-radius: 50%;
+    min-height: 300px;
+    width: 300px;
+    margin: 40px;
+}
+
+.circle-card-text {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 0px 10px 0px;
+}
+
+.back-btn {
+    position: absolute;
+    top: 10px;
+    background: white;
+    color: #1d7641;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 42px;
+    border-color: #e9ecef #e9ecef #dee2e6 !important;
+}
+
+button.btn.back-btn:hover {
+    color: #ffffff !important;
+    background-color: #1d7641 !important;
+}
+
+
+/* unvisited link */
+a {
+    color: blue !important;
+}
+
+a:link {
+    text-decoration: none !important;
+    color: blue !important
+}
+
+a:visited {
+    text-decoration: none !important;
+    color: blue !important
+}
+
+a:hover {
+    text-decoration: underline !important;
+    color: blue !important
+}
+
+a:active {
+    text-decoration: underline !important;
+    color: blue !important
+}
+
+.horizontal-scrolling {
+    overflow: auto !important;
+}
+
+.photo-sig {
+    overflow: hidden !important;
+    display: inline-block !important;
+    /* width: 100px !important; */
+}
+
+.photo-sig-img {
+    width: 100px !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    /* .dashboard-line > ul::before {
+        width: 91%;
+        top: 1612px;
+} */
+
+    .dashboard-icons {
+        font-size: 44px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    /* .dashboard-line > ul::before {
+        width: 95%;
+        top: 719px;
+} */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    /* .dashboard-line > ul::before {
+        width: 95%;
+        top: 737px;
+} */
+
+    .dashboard-icons {
+        font-size: 44px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1024px) {
+    /* .dashboard-line > ul::before {
+        width: 94%;
+        top: 589px;
+} */
+
+    .dashboard-icons {
+        font-size: 64px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    /* .dashboard-line > ul::before {
+        width: 98%;
+       top: 572px;;
+} */
+
+    .dashboard-icons {
+        font-size: 64px;
+    }
+}

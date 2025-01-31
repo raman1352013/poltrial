@@ -1,0 +1,470 @@
+<p>
+  doc-verification-ncc works!
+</p>
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <!-- <div class="row justify-content-center pt-4">
+        <u><b></b></u>
+      </div> -->
+
+      <div class="row pt-3">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="other-header border-top-left-radius border-top-right-radius ">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative"> NSS/NCC/Bharat Scout and Guide Certificate
+              </h2>
+            </div>
+            <div class="card-body">
+              <zxing-scanner (scanSuccess)="onCodeResult($event)" *ngIf="enableScanner"></zxing-scanner>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="scanQr()">Scan
+                    Admit Card</button>
+                </div>
+
+                <div class="col-md-12 text-center pt-3 pb-3">
+                  <h2>OR</h2>
+                </div>
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-4">
+                  <form [formGroup]='searchForm'>
+                    <div class="form-group">
+                      <!-- <label></label> -->
+                      <input name="applicationNumber" type="text" class="form-control"
+                        formControlName="applicationNumber" placeholder="Roll No.">
+                    </div>
+                  </form>
+                </div>
+
+                <div class="col-md-4">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                    (click)="getApplicationDetails()">Verify</button>
+                </div>
+              </div>
+              <form [formGroup]='manageAdmitCardsForm' *ngIf="enableForm">
+                <!-- <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Total Candidates</label>
+                    <hr>
+                  </div>
+                </div> -->
+
+                <div class="row pt-4">
+                  <div class="col-md-12">
+                    <label class="header-font">Candidate Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row pt-4">
+                  <div class="col-md-6">
+                    <label>Photo</label><br>
+                    <div class="photo-sig">
+
+                      <img class="photo-sig-img" [src]='photo' alt="logo">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Signature</label><br>
+                    <div class="photo-sig">
+                      <img class="photo-sig-img" [src]='signature' alt="logo">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Application ID</label>
+                      <input name="applicationNo" type="text" class="form-control" formControlName="applicationNo"
+                        readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Bonafide District</label>
+                      <input name="district" type="text" class="form-control" formControlName="district" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Full name</label>
+                      <input name="name" type="text" class="form-control" formControlName="name" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gorkha</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="isGorkha" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Father's Name</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="fatherName" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Date of Birth</label>
+                      <input name="dob" type="text" class="form-control" formControlName="dob" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gender</label>
+                      <input name="gender" type="text" class="form-control" formControlName="gender" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <input name="category" type="text" class="form-control" formControlName="category" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Sub Category</label>
+                      <input name="subCategory" type="text" class="form-control" formControlName="subCategory" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Post Applied For</label>
+                      <input name="postAppliedFor" type="text" class="form-control" formControlName="postAppliedFor"
+                        readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Height Marks</label>
+                      <input name="heightMarks" type="text" class="form-control" formControlName="heightMarks"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Exam Marks</label>
+                      <input name="examMarks" type="text" class="form-control" formControlName="examMarks"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Scrutiny Venue</label>
+                      <input name="scrutinyVenue" type="text" class="form-control" formControlName="scrutinyVenue"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Scrutiny Date</label>
+                      <input name="scrutinyDate" type="text" class="form-control" formControlName="scrutinyDate"
+                        readonly>
+                    </div>
+                  </div> 
+                  <!-- <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Registered Mobile No.</label>
+                      <input name="mobileNo" type="text" class="form-control" formControlName="mobileNo" readonly>
+                    </div>
+                  </div> -->
+                </div>
+              </form> 
+
+              <div *ngIf="enableForm">
+                <div class="row pt-4">
+                  <div class="col-md-12">
+                    <label class="header-font"> NSS/NCC/Bharat Scout and Guide Certificate</label>
+                    <hr>
+                  </div>
+                </div>
+                <form [formGroup]="generateAdmitCardForm">
+                
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>NSS </label><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defausdsdltInline51" name="nssEvaluation" mdbInput
+                            formControlName="nssEvaluation" (change)='selectNss()' value="1">
+                          <label class="custom-control-label" for="defausdsdltInline51">1 Year</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInlinewewe122" name="nssEvaluation"
+                            formControlName="nssEvaluation" mdbInput (change)='selectNss()' value="2">
+                          <label class="custom-control-label" for="defaultInlinewewe122">2 Years</label>
+                        </div>
+                
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline1222hgh" name="nssEvaluation"
+                            formControlName="nssEvaluation" mdbInput (change)='selectNss()' value="3">
+                          <label class="custom-control-label" for="defaultInline1222hgh">3 Years</label>
+                        </div>
+                
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defsdaultInline1422" name="nssEvaluation"
+                            formControlName="nssEvaluation" mdbInput (change)='selectNss()' value="4">
+                          <label class="custom-control-label" for="defsdaultInline1422">4 Years or More</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="desdfsdaultInline1422" name="nssEvaluation"
+                            formControlName="nssEvaluation" mdbInput (change)='selectNss()' value="0">
+                          <label class="custom-control-label" for="desdfsdaultInline1422">None</label>
+                        </div>
+                        <div *ngIf="generateAdmitCardForm.controls.nssEvaluation.errors &&
+                                          submitApplicationForm==true">
+                          <span *ngIf="generateAdmitCardForm.controls.nssEvaluation.errors.required" class="error">
+                            Please select NSS</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Marks</label>
+                        <input name="gender" type="text" class="form-control" formControlName="nssEvaluationMarks" readonly>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>NCC </label><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defausd" name="nccEvaluation" mdbInput
+                            formControlName="nccEvaluation" (change)='selectNcc()' value="1">
+                          <label class="custom-control-label" for="defausd">NCC (A) Certificate</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="utytyu" name="nccEvaluation"
+                            formControlName="nccEvaluation" mdbInput (change)='selectNcc()' value="2">
+                          <label class="custom-control-label" for="utytyu">NCC (B) Certificate</label>
+                        </div>
+                
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="ygyuguwd7" name="nccEvaluation"
+                            formControlName="nccEvaluation" mdbInput (change)='selectNcc()' value="4">
+                          <label class="custom-control-label" for="ygyuguwd7">NCC (C) Certificate</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="jyguyu778" name="nccEvaluation"
+                            formControlName="nccEvaluation" mdbInput (change)='selectNcc()' value="0">
+                          <label class="custom-control-label" for="jyguyu778">None</label>
+                        </div>
+                        <div *ngIf="generateAdmitCardForm.controls.nccEvaluation.errors &&
+                                          submitApplicationForm==true">
+                          <span *ngIf="generateAdmitCardForm.controls.nccEvaluation.errors.required" class="error">
+                            Please select NCC</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Marks</label>
+                        <input name="gender" type="text" class="form-control" formControlName="nccEvaluationMarks" readonly>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Bharat Scout </label><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defausdsdltdssInline51" name="scoutEvaluation" mdbInput
+                            formControlName="scoutEvaluation" (change)='selectIsScout()' value="1">
+                          <label class="custom-control-label" for="defausdsdltdssInline51">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultIwenlinewewe122" name="scoutEvaluation"
+                            formControlName="scoutEvaluation" mdbInput (change)='selectIsScout()' value="0">
+                          <label class="custom-control-label" for="defaultIwenlinewewe122">No</label>
+                        </div>
+                
+                        <div *ngIf="generateAdmitCardForm.controls.scoutEvaluation.errors &&
+                                          submitApplicationForm==true">
+                          <span *ngIf="generateAdmitCardForm.controls.scoutEvaluation.errors.required" class="error">
+                            Please select bharat scout</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Marks</label>
+                        <input name="gender" type="text" class="form-control" formControlName="scoutEvaluationMarks" readonly>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Total Score</label>
+                        <input name="gender" type="text" class="form-control" formControlName="nssNccEvaluationMarks" readonly>
+                        <div *ngIf="generateAdmitCardForm.controls.nssNccEvaluationMarks.errors &&
+                                          submitApplicationForm==true">
+                          <span *ngIf="generateAdmitCardForm.controls.nssNccEvaluationMarks.errors.required" class="error">
+                            Please enter NSS/NCC/Bharat scout</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Remarks</label>
+                        <textarea class="form-control" formControlName="nssNccRemarks" name="nssNccRemarks" rows="2" cols="50">
+                                           </textarea>
+                        <div *ngIf="generateAdmitCardForm.controls.nssNccRemarks.errors &&
+                                          submitApplicationForm==true">
+                          <span *ngIf="generateAdmitCardForm.controls.nssNccRemarks.errors.required" class="error">
+                            Please enter remarks</span>
+                        </div>
+                      </div>
+                    </div>
+                
+                  </div>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Certificate in Sports </label><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline51" name="isSports" mdbInput
+                            formControlName="isSports" (change)='selectIsSports()' value="4">
+                          <label class="custom-control-label" for="defaultInline51">International</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline122" name="isSports"
+                            formControlName="isSports" mdbInput (change)='selectIsSports()' value="3">
+                          <label class="custom-control-label" for="defaultInline122">National</label>
+                        </div>
+                
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline1222" name="isSports"
+                            formControlName="isSports" mdbInput (change)='selectIsSports()' value="2">
+                          <label class="custom-control-label" for="defaultInline1222">State</label>
+                        </div>
+                
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline1422" name="isSports"
+                            formControlName="isSports" mdbInput (change)='selectIsSports()' value="0">
+                          <label class="custom-control-label" for="defaultInline1422">None</label>
+                        </div>
+                        <div *ngIf="generateAdmitCardForm.controls.isSports.errors &&
+                                          submitApplicationForm==true">
+                          <span *ngIf="generateAdmitCardForm.controls.isSports.errors.required" class="error">
+                            Please select certificate</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Marks</label>
+                        <input name="gender" type="text" class="form-control" formControlName="sportsEvaluationMarks" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Medal Winner of International/Olympic/National Level Sports </label><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInwline51" name="isMdw" mdbInput
+                            formControlName="isMdw" (change)='medalWinner()' value="1">
+                          <label class="custom-control-label" for="defaultInwline51">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInl32ine122" name="isMdw" formControlName="isMdw"
+                            mdbInput (change)='medalWinner()' value="0">
+                          <label class="custom-control-label" for="defaultInl32ine122">No</label>
+                        </div>
+                        <div *ngIf="generateAdmitCardForm.controls.isMdw.errors &&
+                                          submitApplicationForm==true">
+                          <span *ngIf="generateAdmitCardForm.controls.isMdw.errors.required" class="error">
+                            Please select medal winner</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Marks</label>
+                        <input name="gender" type="text" class="form-control" formControlName="mdwEvaluationMarks" readonly>
+                      </div>
+                    </div>
+                  </div>
+                
+                
+                </form>
+
+                <div class="col-md-12 text-center"> 
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="submit()">
+                    Submit</button>
+              </div> 
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      <span class="text-danger ft-weight-semi">Note</span>:Do you really want to submit the form? Information once submitted cannot be changed.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('first consent')">Submit</button>
+  </div>
+</ng-template>
+
+<ng-template #confFormPopUP let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      Do you really want to submit the form? Information once submitted cannot be changed.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('second consent')">Submit</button>
+  </div>
+</ng-template>

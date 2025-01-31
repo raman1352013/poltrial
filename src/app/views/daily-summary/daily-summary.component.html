@@ -1,0 +1,189 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <div class="row justify-content-center pt-4">
+        <u><b>Daily Summary</b></u>
+      </div>
+      <!-- <div class="row">
+
+      </div> -->
+      <!-- <form [formGroup]='searchForm' class="pt-4">
+        <div class="row">
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>District</label>
+              <select class="form-control" formControlName="districtId" name="districtId"
+                [attr.disabled]='disableDistrict ? true : null'>
+                <option value="" selected disabled hidden>Select Value</option>
+                <option *ngFor="let x of districtList" [value]='x.id'>{{x.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 ">
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" class="form-control" formControlName="petDate" name="petDate" [min]="minDate">
+            </div>
+          </div> 
+        </div>
+      </form>
+      <div class="row jultify-right">
+        <div class="col-md-4  jultify-right">
+          <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold right-align"
+            (click)='searchApplication()'>Search</button>
+        </div>
+      </div> -->
+      <!-- <div class="pt-4 mr-5 ml-5"> -->
+      <!-- <div class="row"> -->
+      <div class="text-right">
+        <label>Total Candidate: {{summaryList.length}} <span *ngIf="userId !=4">| Qualified: {{totalQualified.length}} |
+            Dis-Qualified: {{totaldisqualified.length}}</span></label>
+      </div>
+      <div class="horizontal-scrolling">
+        <table class="table table-bordered w-nospace table-hover" *ngIf="summaryList && summaryList.length>0">
+          <thead>
+            <!-- <tr class="row right-align">
+              <label>Total Candidate: {{summaryList.length}}</label>
+            </tr> -->
+            <tr>
+              <th class="bg-col-body cardText">Application No</th>
+              <th class="bg-col-body cardText">Name</th>
+              <th class="bg-col-body cardText">Father Name</th>
+              <th class="bg-col-body cardText">Gender</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 4">Registration Date</th>
+
+              <th class="bg-col-body cardText" *ngIf="userId == 5">Height Feet</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 5">Height Inch</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 5">Status</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 5">Marks</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 5">Date</th>
+
+              <th class="bg-col-body cardText" *ngIf="userId == 6">Chest A</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 6">Chest B</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 6">Status</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 6">Date</th>
+
+              <!-- <th class="bg-col-body cardText" *ngIf="userId == 8">Status</th> -->
+              <th class="bg-col-body cardText" *ngIf="userId == 8">Attempt 1</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 8">Attempt 2</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 8">Attempt 3</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 8">Date</th>
+
+              <!-- <th class="bg-col-body cardText" *ngIf="userId == 9">Status</th> -->
+              <th class="bg-col-body cardText" *ngIf="userId == 9">Attempt 1</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 9">Attempt 2</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 9">Attempt 3</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 9">Date</th>
+
+              <th class="bg-col-body cardText" *ngIf="userId == 7">Status</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 7">Date</th>
+
+              <th class="bg-col-body cardText" *ngIf="userId == 10">Status</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 10">Marks</th>
+              <th class="bg-col-body cardText" *ngIf="userId == 10">Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr data-toggle="collapse" *ngFor="let x of summaryList">
+              <td>{{x.applicationNumber}}</td>
+              <td>{{x.candidateName}}</td>
+              <td>{{x.fatherName}}</td>
+              <td>{{x.gender}}</td>
+              <!-- <td>{{x.attendanceTime}}</td> -->
+              <td *ngIf="userId == 4">{{x.attendanceTime}}</td>
+
+
+              <td *ngIf="userId == 5">{{x.petHeights.heightFeet}}</td>
+              <td *ngIf="userId == 5">{{x.petHeights.heightInches}}</td>
+              <td *ngIf="userId == 5">{{x.petHeights.heightExamStatus == 'P' ? 'Qualified' : 'Not Qualified'}}</td>
+              <td *ngIf="userId == 5">{{x.petHeights.heightMarks}}</td>
+              <td *ngIf="userId == 5">{{x.petHeights.heightExamDate}}</td>
+
+              <td *ngIf="userId == 6">{{x.petChest.chestA}}</td>
+              <td *ngIf="userId == 6">{{x.petChest.chestB}}</td>
+              <td *ngIf="userId == 6">{{x.petChest.chestExamStatus == 'P' ? 'Qualified' : 'Not Qualified'}}</td>
+              <td *ngIf="userId == 6">{{x.petChest.chestExamDate}}</td>
+              <!-- <td>{{x.pstPass}}</td>
+              <td>{{x.pstFail}}</td>
+              <td>{{x.registered - x.pstPass - x.pstFail}}</td> -->
+
+
+
+              <td *ngIf="userId == 8">{{x.petBroadJump.broadJumpStatusOne}}</td>
+              <td *ngIf="userId == 8">{{x.petBroadJump.broadJumpStatusTwo}}</td>
+              <td *ngIf="userId == 8">{{x.petBroadJump.broadJumpStatusThree}}</td>
+              <td *ngIf="userId == 8">{{x.petBroadJump.broadJumpDate}}</td>
+
+              <!-- <td *ngIf="userId == 9">{{x.petJump.highJumpStatus}}</td> -->
+              <td *ngIf="userId == 9">{{x.petJump.highJumpStatusOne}}</td>
+              <td *ngIf="userId == 9">{{x.petJump.highJumpStatusTwo}}</td>
+              <td *ngIf="userId == 9">{{x.petJump.highJumpStatusThree}}</td>
+              <td *ngIf="userId == 9">{{x.petJump.highJumpDate}}</td>
+
+              <td *ngIf="userId == 7">{{x.petRace.raceExamStatus == 'P' ? 'Qualified' : 'Not Qualified'}}</td>
+              <td *ngIf="userId == 7">{{x.petRace.raceExamDate}}</td>
+
+
+
+              <!-- <td>{{x.petPass}}</td>
+              <td>{{x.petFail}}</td>
+              <td>{{x.pstPass - x.petPass - x.petFail}}</td> -->
+
+              <td *ngIf="userId==10">{{x.petDriver.driverExamStatus == 'P' ? 'Qualified' : 'Not Qualified'}}</td>
+              <td *ngIf="userId == 10">{{x.petDriver.driverExamMarks}}</td>
+              <td *ngIf="userId == 10">{{x.petDriver.driverExamDate}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <!-- <ngb-pagination [collectionSize]="summaryList.length" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="7"
+        [rotate]="true" (pageChange)="onPageChange(page)" *ngIf="summaryList && summaryList.length>0">
+      </ngb-pagination> -->
+    </div>
+  </div>
+</main>
+
+<ng-template #attendanceRemarks let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm!!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]='confirmationForm'>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Remarks</label>
+          <input type="text" class="form-control" formControlName="remarks" placeholder="Remarks">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-danger uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Close</button>
+    <button class="btn btn-success uppercase mr-1" data-dismiss="modal" (click)="modal.close('Remarks Ok')"
+      [disabled]='enableResedOTP'>Ok</button>
+  </div>
+</ng-template>
+
+<ng-template #secondConsentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      Do you really want to send the SMS?.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('Send SMS')">Submit</button>
+  </div>
+</ng-template>

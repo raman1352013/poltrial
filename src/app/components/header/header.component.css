@@ -1,0 +1,58 @@
+.sidenav {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #e5e7e9;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #e5e7e9;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+.nav-link.dropdown-toggle em {
+  font-size: 16px;
+  padding-right: 5px;
+  position: relative;
+  top: 2px;
+}
+
+.logo-home {
+  /* max-width: 113px !important; */
+  padding: 11px !important;
+  margin-right: 20px !important;
+  margin-left: 2% !important;
+}
+
+.logo {
+  /* max-width: 111px;
+  padding: 5px 20px;
+  margin-right: 20px; */
+  max-width: 113px !important;
+  padding: 11px !important;
+  margin-right: 20px !important;
+  padding-top: 10px !important;
+  margin-left: 2% !important;
+}

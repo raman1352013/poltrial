@@ -1,0 +1,361 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <!-- <div class="row justify-content-center pt-4">
+        <u><b></b></u>
+      </div> -->
+
+      <div class="row pt-3">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="other-header border-top-left-radius border-top-right-radius ">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative">Registration (Document Scrutiny) 
+              </h2>
+            </div>
+            <div class="card-body">
+              <zxing-scanner (scanSuccess)="onCodeResult($event)" *ngIf="enableScanner"></zxing-scanner>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="scanQr()">Scan
+                    Admit Card</button>
+                </div>
+
+                <div class="col-md-12 text-center pt-3 pb-3">
+                  <h2>OR</h2>
+                </div>
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-4">
+                  <form [formGroup]='searchForm'>
+                    <div class="form-group">
+                      <!-- <label></label> -->
+                      <input name="applicationNumber" type="text" class="form-control"
+                        formControlName="applicationNumber" placeholder="Roll No.">
+                    </div>
+                  </form>
+                </div>
+
+                <div class="col-md-4">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                    (click)="getApplicationDetails()">Verify</button>
+                </div>
+              </div>
+              <form [formGroup]='manageAdmitCardsForm' *ngIf="enableForm">
+                <!-- <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Total Candidates</label>
+                    <hr>
+                  </div>
+                </div> -->
+
+                <div class="row pt-4">
+                  <div class="col-md-12">
+                    <label class="header-font">Candidate Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row pt-4">
+                  <div class="col-md-6">
+                    <label>Photo</label><br>
+                    <div class="photo-sig">
+
+                      <img class="photo-sig-img" [src]='photo' alt="logo">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Signature</label><br>
+                    <div class="photo-sig">
+                      <img class="photo-sig-img" [src]='signature' alt="logo">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Application ID</label>
+                      <input name="applicationNo" type="text" class="form-control" formControlName="applicationNo"
+                        readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Bonafide District</label>
+                      <input name="district" type="text" class="form-control" formControlName="district" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Full name</label>
+                      <input name="name" type="text" class="form-control" formControlName="name" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gorkha</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="isGorkha" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Father's Name</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="fatherName" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Date of Birth</label>
+                      <input name="dob" type="text" class="form-control" formControlName="dob" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gender</label>
+                      <input name="gender" type="text" class="form-control" formControlName="gender" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <input name="category" type="text" class="form-control" formControlName="category" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Sub Category</label>
+                      <input name="subCategory" type="text" class="form-control" formControlName="subCategory" readonly>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Post Applied For</label>
+                      <input name="postAppliedFor" type="text" class="form-control" formControlName="postAppliedFor"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Height Marks</label>
+                      <input name="heightMarks" type="text" class="form-control" formControlName="heightMarks"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Exam Marks</label>
+                      <input name="examMarks" type="text" class="form-control" formControlName="examMarks"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Scrutiny Venue</label>
+                      <input name="scrutinyVenue" type="text" class="form-control" formControlName="scrutinyVenue"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Scrutiny Date</label>
+                      <input name="scrutinyDate" type="text" class="form-control" formControlName="scrutinyDate"
+                        readonly>
+                    </div>
+                  </div> 
+
+                  <div class="col-md-12" *ngIf="provisionalRemakrs">
+                    <div class="form-group">
+                      <label>Provisional Remakrs</label>
+
+                      <textarea class="form-control" formControlName="provisionalRemakrs" readonly name="provisionalRemakrs" rows="3" cols="50">
+                      </textarea>
+
+                      <!-- <input name="scrutinyDate" type="text" class="form-control" formControlName="provisionalRemakrs"
+                        readonly> -->
+                    </div>
+                  </div> 
+                </div>
+              </form> 
+
+              <div  *ngIf="enableForm">
+                <div class="row pt-4">
+                  <div class="col-md-12">
+                    <label class="header-font">Registration(Checklist)</label>
+                    <hr>
+                  </div>
+                </div>
+                <form [formGroup]="checkListForm">
+                  <div class="row">
+                    <div class="col-md-3 text-left">
+                      <div class="form-group">
+                        <input type="checkbox"  class="form-check-input undertakingCheck ml-1"
+                          id="exampleCheck434132" formControlName="bonafied" value="1"  (change)="checkValueBonafied($event)">
+                        <label class="form-check-label undertakingLabel pl-4" for="exampleCheck434132">Bonafide Himachali
+                        </label>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-3 text-left">
+                      <div class="form-group">
+                        <input type="checkbox"  class="form-check-input undertakingCheck ml-1"
+                          id="exampleCheckfgfg132" formControlName="tenPlus" value="2" (change)="checkValueTestPlus($event)">
+                        <label class="form-check-label undertakingLabel pl-4" for="exampleCheckfgfg132">10+2
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3 text-left">
+                      <div class="form-group">
+                        <input type="checkbox"  class="form-check-input undertakingCheck ml-1"
+                          id="exampleChhgheckfgfg132" formControlName="dob" value="2" (change)="checkDob($event)">
+                        <label class="form-check-label undertakingLabel pl-4" for="exampleChhgheckfgfg132">DOB
+                        </label>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-3 text-left" *ngIf="gorkha">
+                      <div class="form-group">
+                        <input type="checkbox"  class="form-check-input undertakingCheck ml-1"
+                          id="exampleewrgCheck132" formControlName="isGorkha" value="3" (change)="checkValueGorkha($event)">
+                        <label class="form-check-label undertakingLabel pl-4" for="exampleewrgCheck132">Gorkha
+                        </label>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-3 text-left" *ngIf="hMVLicense">
+                      <div class="form-group">
+                        <input type="checkbox"  class="form-check-input undertakingCheck ml-1"
+                          id="exampleChgfgeck132" formControlName="lic" value="4" (change)="checkValueLic($event)">
+                        <label class="form-check-label undertakingLabel pl-4" for="exampleChgfgeck132">HMV License
+                        </label>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-3 text-left" *ngIf="category">
+                      <div class="form-group">
+                        <input type="checkbox"  class="form-check-input undertakingCheck ml-1"
+                          id="exampleChecsgsk132" formControlName="cat" value="5" (change)="checkValueCat($event)">
+                        <label class="form-check-label undertakingLabel pl-4" for="exampleChecsgsk132">{{categoryDesc}}
+                        </label>
+                      </div>
+                    </div>
+  
+                    <div class="col-md-3 text-left" *ngIf="subCategory">
+                      <div class="form-group">
+                        <input type="checkbox"  class="form-check-input undertakingCheck ml-1"
+                          id="exampleCheck1fdfs32" formControlName="subCat" value="6" (change)="checkValueSubCat($event)">
+                        <label class="form-check-label undertakingLabel pl-4" for="exampleCheck1fdfs32">{{subCategoryDesc}}  
+                        </label>
+                      </div>
+                    </div>
+  
+  
+                  </div>
+                </form>
+                
+                <div class="row">
+                 
+                  <div class="col-md-12 text-center">
+                    <button class="bg-danger btn btn-danger uppercase ml-2 w-20 ft-weight-bold" (click)="updateHeightConfirmation(0)"> 
+                      Reject</button>
+                    <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="updateHeightConfirmation(1)"> 
+                     Register</button> 
+                        <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="downloadAdmitCard()"> 
+                          Download Admit Card</button>
+                  </div> 
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      <span class="text-danger ft-weight-semi">Note</span>:Do you really want to submit the form? Information once submitted cannot be changed.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('first consent')">Submit</button>
+  </div>
+</ng-template>
+
+<ng-template #secondConsentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class="login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm!!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="remarksForm">
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label>
+            <span class="text-danger ft-weight-semi">Note</span>: Do you really want to submit the form? Information
+            once submitted cannot be changed.
+          </label><br>
+          <label>Remarks
+            <span class="text-danger ft-weight-semi">*</span>
+          </label>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="remarks">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer" style="justify-content: right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      [disabled]="!remarksForm.valid" (click)="modal.close('first consent')">Submit</button>
+  </div>
+</ng-template>
+
+<ng-template #confFormPopUP let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-12">
+      Do you really want to submit the form? Information once submitted cannot be changed.
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('second consent')">Submit</button>
+  </div>
+</ng-template>

@@ -1,0 +1,304 @@
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <!-- <div class="row justify-content-center pt-4">
+        <u><b></b></u>
+      </div> -->
+
+      <div class="row pt-3">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+          <div class="card  border-top-left-radius border-top-right-radius">
+            <div class="other-header border-top-left-radius border-top-right-radius ">
+              <h2 class="text-center uppercase ft-weight-bold  position-relative">Disqualify Candidate (Written Exam)
+              </h2>
+            </div>
+            <div class="card-body">
+              <zxing-scanner (scanSuccess)="onCodeResult($event)" *ngIf="enableScanner"></zxing-scanner>
+              <div class="row">
+                <!-- <div class="col-md-12 text-center">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="scanQr()">Scan
+                    Admit Card</button>
+                </div>
+
+                <div class="col-md-12 text-center pt-3 pb-3">
+                  <h2>OR</h2>
+                </div> -->
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-4">
+                  <form [formGroup]='searchForm'>
+                    <div class="form-group">
+                      <!-- <label></label> -->
+                      <input name="applicationNumber" type="text" class="form-control"
+                        formControlName="applicationNumber" placeholder="Application Number">
+                    </div>
+                  </form>
+                </div>
+
+                <div class="col-md-4">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold"
+                    (click)="getApplicationDetails()">Verify</button>
+                </div>
+              </div>
+              <form [formGroup]='manageAdmitCardsForm' *ngIf="enableForm">
+                <!-- <div class="row pt-2">
+                  <div class="col-md-12">
+                    <label class="header-font">Total Candidates</label>
+                    <hr>
+                  </div>
+                </div> -->
+
+                <div class="row pt-4">
+                  <div class="col-md-12">
+                    <label class="header-font">Candidate Details</label>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row pt-4">
+                  <div class="col-md-6">
+                    <label>Photo</label><br>
+                    <div class="photo-sig">
+
+                      <img class="photo-sig-img" [src]='photo' alt="logo">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Signature</label><br>
+                    <div class="photo-sig">
+                      <img class="photo-sig-img" [src]='signature' alt="logo">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Application ID</label>
+                      <input name="applicationNo" type="text" class="form-control" formControlName="applicationNo"
+                        disabled>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Bonafide District</label>
+                      <input name="district" type="text" class="form-control" formControlName="district">
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>HP Bonafide Certifcate No</label>
+                      <input name="hpBonafideCertifcateNo" type="text" class="form-control"
+                        formControlName="hpBonafideCertifcateNo">
+                      <div
+                        *ngIf="manageAdmitCardsForm.controls.hpBonafideCertifcateNo.errors && submitApplicationForm==true">
+                        <span *ngIf="manageAdmitCardsForm.controls.hpBonafideCertifcateNo.errors.required"
+                          class="error">
+                          Please enter HP Bonafide Certifcate No.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Full name</label>
+                      <input name="name" type="text" class="form-control" formControlName="name">
+                      <div *ngIf="manageAdmitCardsForm.controls.name.errors && submitApplicationForm==true">
+                        <span *ngIf="manageAdmitCardsForm.controls.name.errors.required" class="error">
+                          Please enter name</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Gorkha</label><br>
+                      <!-- <input name="fatherName" type="text" class="form-control" formControlName="isGorkha"> -->
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline5112" name="isGorkha" mdbInput
+                          formControlName="isGorkha" value="Y" disabled>
+                        <label class="custom-control-label" for="defaultInline5112">Yes</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline12232" name="isGorkha"
+                          formControlName="isGorkha" mdbInput value="N" disabled>
+                        <label class="custom-control-label" for="defaultInline12232">No</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Father's Name</label>
+                      <input name="fatherName" type="text" class="form-control" formControlName="fatherName">
+                      <div *ngIf="manageAdmitCardsForm.controls.fatherName.errors && submitApplicationForm==true">
+                        <span *ngIf="manageAdmitCardsForm.controls.fatherName.errors.required" class="error">
+                          Please enter father name</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <div class="form-group">
+                      <label>Date of Birth</label>
+                      <input type="date" class="form-control" formControlName="dob" name="dob" (change)='geDob($event)'
+                        [min]="minDate" [max]="maxDate">
+                      <!-- <input name="dob" type="text" class="form-control" formControlName="dob"> -->
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 ">
+                    <!-- <div class="form-group">
+                      <label>Gender</label> -->
+                    <div class="form-group">
+                      <label>Gender <span class="text-danger ft-weight-semi">*</span></label><br>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline51" name="gender" mdbInput
+                          formControlName="gender" value="2">
+                        <label class="custom-control-label" for="defaultInline51">Male</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="defaultInline122" name="gender"
+                          formControlName="gender" mdbInput value="1">
+                        <label class="custom-control-label" for="defaultInline122">Female</label>
+                      </div>
+                    </div>
+                    <!-- <input name="gender" type="text" class="form-control" formControlName="gender"> -->
+                    <!-- </div> -->
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <!-- <label>Category</label> -->
+                      <!-- <input name="category" type="text" class="form-control" formControlName="category"> -->
+                      <div class="form-group">
+                        <label>Category <span class="text-danger ft-weight-semi">*</span></label>
+                        <select class="form-control" formControlName="category" name="category">
+                          <option value="" selected disabled hidden>Select value</option>
+                          <option *ngFor="let x of categoryList" [value]='x.id'>{{x.name}}</option>
+                        </select>
+                        <!-- <div *ngIf="manageAdmitCardsForm.controls.category.errors && submitApplicationForm==true">
+                          <span *ngIf="manageAdmitCardsForm.controls.category.errors.required" class="error">
+                            Please select category</span>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <!-- <div class="form-group">
+                      <label>Sub Category</label>
+                      <input name="subCategory" type="text" class="form-control" formControlName="subCategory">
+                    </div> -->
+                    <div class="form-group">
+                      <label>Sub Category <span class="text-danger ft-weight-semi">*</span></label>
+                      <select class="form-control" formControlName="subCategory" name="subCategory">
+                        <option value="" selected disabled hidden>Select value</option>
+                        <option *ngFor="let x of subCategoryList" [value]='x.id'>{{x.name}}</option>
+                      </select>
+                      <!-- <div *ngIf="manageAdmitCardsForm.controls.subCategory.errors && submitApplicationForm==true">
+                        <span *ngIf="manageAdmitCardsForm.controls.subCategory.errors.required" class="error">
+                          Please select sports category</span>
+                      </div> -->
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <!-- <label>Category</label> -->
+                      <!-- <input name="category" type="text" class="form-control" formControlName="category"> -->
+                      <div class="form-group">
+                        <label>Post Applied for <span class="text-danger ft-weight-semi">*</span></label><br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" id="defaultInline112" name="postAppliedFor"
+                            formControlName="postAppliedFor" mdbInput value="G">
+                          <label class="custom-control-label" for="defaultInline112">General Duty</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" class="custom-control-input" formControlName="postAppliedFor"
+                            id="defaultInline223" name="postAppliedFor" mdbInput value="D">
+                          <label class="custom-control-label" for="defaultInline223">Driver</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Post Applied For</label>
+                      <input name="postAppliedFor" type="text" class="form-control" formControlName="postAppliedFor">
+                    </div>
+                  </div> -->
+
+                  <div class="col-md-12" *ngIf="anableOtherAction">
+                    <div class="form-group">
+                      <label>Remarks</label>
+                      <textarea rows="3" name="remarks" type="text" class="form-control"
+                        formControlName="remarks"></textarea>
+                      <div *ngIf="manageAdmitCardsForm.controls.remarks.errors && submitApplicationForm==true">
+                        <span *ngIf="manageAdmitCardsForm.controls.remarks.errors.required" class="error">
+                          Please enter remarks</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Registered Mobile No.</label>
+                      <input name="mobileNo" type="text" class="form-control" formControlName="mobileNo" readonly>
+                    </div>
+                  </div> -->
+                </div>
+              </form>
+              <div class="row pt-3" *ngIf="enableForm">
+                <div class="col-md-12 text-right">
+                  <button class="bg-blue btn btn-secondary uppercase ml-2 w-20 ft-weight-bold" (click)="cancelEdit()"
+                    >Cancel</button>
+
+                  <!-- <button class="bg-red btn btn-danger uppercase ml-2 w-20 ft-weight-bold" (click)="allowEdit()"
+                    *ngIf="!anableOtherAction">Edit</button> -->
+                  <button class="bg-red btn btn-danger uppercase ml-2 w-20 ft-weight-bold" (click)="consents()"
+                     >Disqualify Candidate</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <!-- <div class="col-md-12">
+      Do you really want to submit the form? Information once submitted cannot be changed.
+    </div> -->
+
+    <div class="row">
+      <div class="col-md-6">
+        <label>Do you really want to submit?</label>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      (click)="modal.close('first consent')">Submit</button>
+  </div>
+</ng-template>

@@ -1,0 +1,48 @@
+<nav aria-label="breadcrumb" class="bread-crumb">
+  <ol class="breadcrumb">
+    <ng-container *ngIf="count !== null">
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0)" id="bread-crumb-home" (click)="breadCrumbNav('Home')">
+          <span class="fa fa-home mr-1"></span>Home</a>
+      </li>
+    </ng-container>
+
+    <ng-container *ngFor="let breadLink of breadCrumb">
+      <li class="breadcrumb-item">
+          <span class="fa fa-home mr-1" *ngIf="breadLink == 'Home'"></span>{{breadLink}}
+        <!-- <a href="javascript:void(0)" id='bread-crumb-{{breadLink}}'>
+          </a> -->
+      </li>
+    </ng-container>
+  </ol>
+
+  <!-- <button id="bread-crumb-view-application" class="btn btn-outline-primary btn-sm view-btn" data-toggle="modal" data-target="#viewdetails">
+      <em class="fa fa-eye"></em> View Application</button> -->
+</nav>
+
+
+
+<!-- The Modal
+<div class="modal fade" id="viewdetails">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+  
+        Modal Header
+        <div class="modal-header">
+          <h2 class="modal-title heading">APPLICATION VIEW DETAILS</h2>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        Modal body
+        <div class="modal-body">
+            <app-exam-app-details></app-exam-app-details>
+        </div>
+  
+        Modal footer
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div> -->

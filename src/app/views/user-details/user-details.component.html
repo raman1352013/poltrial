@@ -1,0 +1,45 @@
+<!-- Main block -->
+<main class="main-contentt">
+  <div class="inner-sec">
+    <app-bread-crumb></app-bread-crumb>
+    <div class="content mt-5">
+      <app-main-header></app-main-header>
+      <div class="row justify-content-center pt-4">
+        <u><b>User Details</b></u>
+      </div>
+      <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+
+      <section class="results" *ngIf="qrResultString">
+        <div>
+          <small>Result</small>
+          <strong>{{ qrResultString }}</strong>
+        </div>
+        <button mat-icon-button (click)="clearResult()">&times;</button>
+      </section>
+
+
+    </div>
+  </div>
+
+</main>
+
+
+<ng-template #consentPopUp let-modal data-keyboard="false" data-backdrop="static">
+  <div class=" login-header  border-top-left-radius border-top-right-radius">
+    <h2 class="text-center uppercase ft-weight-bold  position-relative">Confirm !!
+    </h2>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        Do you really want to submit the form? Information once submitted cannot be changed.
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer jultify-right">
+    <button class="btn btn-secondary uppercase mr-1" data-dismiss="modal"
+      (click)="modal.close('Close click')">Cancel</button>
+    <button class="bg-blue btn btn-primary uppercase ml-2 w-20 ft-weight-bold" data-dismiss="modal"
+      [disabled]="otpFormisvalid" (click)="modal.close('Submit application')">Submit</button>
+  </div>
+</ng-template>
